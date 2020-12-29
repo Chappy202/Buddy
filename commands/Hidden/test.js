@@ -7,7 +7,7 @@ class TestCommand extends Command {
         super('test', {
             aliases: ['test']
         });
-        this.name = 'help';
+        this.name = 'test';
         this.description = 'Run a simple test command';
         this.usage = 'test';
     }

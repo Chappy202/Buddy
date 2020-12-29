@@ -29,5 +29,11 @@ module.exports = {
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
         return arr;
+    },
+    getToday: () => {
+        let today = new Date();
+        let date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        return date + " " + time
     }
 };

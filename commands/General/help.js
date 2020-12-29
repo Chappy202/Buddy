@@ -8,13 +8,14 @@ class HelpCommand extends Command {
             aliases: ['help', 'h', '?']
         });
         this.name = 'help';
-        this.description = 'Shows a list of all commands or info about a specific command';
-        this.usage = 'help [command name]';
+        this.description = "Show list of commands"
+        this.usage = "help [command name]"
+        this.example = "help about"
     }
 
     exec(message) {
         let args = message.content
-            .slice(this.client.config.defaultPrefixes.length)
+            .slice(this.client.config.defaultPrefix.length)
             .trim()
             .split(/ +/)
             .slice(1);
@@ -24,7 +25,7 @@ class HelpCommand extends Command {
 
         categories.forEach(category => {
             let mod = require(`../${category}/module.json`);
-
+            if (!this.client.isOwner(message.author) && mod.hide) return;
             col[mod.name] = [];
             let commands = fs.readdirSync(`./commands/${category}`);
             commands.forEach(cmd => {
@@ -39,7 +40,7 @@ class HelpCommand extends Command {
                 if(beta === true) return
 
                 let command = new (require(`../${category}/${cmd}`));
-                var name = command.name || command.options;
+                var name = command.name;
                 var aliases = command.aliases.map(x => `\`${x}\``);
                 var description = command.description;
                 var cmdUsage = command.usage;
@@ -74,9 +75,9 @@ class HelpCommand extends Command {
                     `Req by: ${message.author.tag}`,
                     message.author.displayAvatarURL()
                 )
-                .setDescription(`Type \`${message.guild.prefix}help [command name]\` for more informations`)
+                .setDescription(`Type \`${message.guild.prefix}help [command name]\` for more information`)
                 .setTimestamp()
-                .setColor('RANDOM');
+                .setColor(process.env.BASECOLOR);
 
             for (let category in col) {
                 let names = col[category];
@@ -90,7 +91,7 @@ class HelpCommand extends Command {
             let em = new Discord.MessageEmbed()
                 .setThumbnail(this.client.user.displayAvatarURL())
                 .setTimestamp()
-                .setColor('RANDOM')
+                .setColor(process.env.BASECOLOR)
                 .setFooter(
                     "don't includes this <> or this []\n<> = required\n[] = optional"
                 );

@@ -5,7 +5,7 @@ const { prefix } = require("./config.js");
 const path = require("path");
 
 const BuddyClient = require('./core/BuddyClient');
-const BuddyClientUtil = require("./core/BuddyClientUtil");
+const BuddyClientUtil = require('./core/BuddyClientUtil');
 const express = require("express");
 const app = express();
 const client = new BuddyClient({

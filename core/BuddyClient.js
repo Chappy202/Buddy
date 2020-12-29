@@ -4,12 +4,17 @@ const {
     CommandHandler,
     ListenerHandler
 } = require('discord-akairo');
-const { ownerID, defaultPrefixes } = require('../config');
-const config = require('../config');
+const { ownerID, defaultPrefix } = require('../config.js');
+const config = require('../config.js');
 const { Manager } = require('@lavacord/discord.js');
-const BuddyClientUtil = require('./BuddyClientUtil');
+const BuddyClientUtil = require('./BuddyClientUtil.js');
 const db = require('quick.db');
 const winston = require('winston');
+const utils = require('./utils.js');
+
+require('../structures/Guild.js');
+require('../structures/GuildMember.js');
+require('../structures/Message.js');
 
 module.exports = class BuddyClient extends AkairoClient{
     constructor() {
@@ -26,7 +31,7 @@ module.exports = class BuddyClient extends AkairoClient{
                 new winston.transports.File({ filename: 'log' })
             ],
             format: winston.format.printf(
-                log => `[${log.level.toUpperCase()}] ${log.message}`
+                log => `[${utils.getToday()}][${log.level.toUpperCase()}] ${log.message}`
             )
         });
 
@@ -44,6 +49,10 @@ module.exports = class BuddyClient extends AkairoClient{
             handleEdits: true,
             storeMessages: true,
             commandUtil: true,
+            allowMention: true,
+            blockBots: true,
+            blockClient: true,
+            defaultCooldown: 2000,
             prefix: message => (message.guild ? message.guild.prefix : defaultPrefix)
         });
 
