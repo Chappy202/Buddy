@@ -5,7 +5,8 @@ const axios = require('axios');
 class KissCommand extends Command {
     constructor() {
         super('kiss', {
-            aliases: ['kiss']
+            aliases: ['kiss'],
+            category: 'Fun'
         });
 
         this.name = "kiss"

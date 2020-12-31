@@ -5,7 +5,8 @@ const fs = require('fs');
 class HelpCommand extends Command {
     constructor() {
         super('help', {
-            aliases: ['help', 'h', '?']
+            aliases: ['help', '?'],
+            category: 'General'
         });
         this.name = 'help';
         this.description = "Show list of commands"
@@ -40,11 +41,11 @@ class HelpCommand extends Command {
                 if(beta === true) return
 
                 let command = new (require(`../${category}/${cmd}`));
-                var name = command.name;
-                var aliases = command.aliases.map(x => `\`${x}\``);
-                var description = command.description;
-                var cmdUsage = command.usage;
-                var cmdEx = command.example;
+                let name = command.name;
+                let aliases = command.aliases.map(x => `\`${x}\``);
+                let description = command.description;
+                let cmdUsage = command.usage;
+                let cmdEx = command.example;
 
                 col[mod.name].push(`\`${name}\``);
 
@@ -75,7 +76,7 @@ class HelpCommand extends Command {
                     `Req by: ${message.author.tag}`,
                     message.author.displayAvatarURL()
                 )
-                .setDescription(`Type \`${message.guild.prefix}help [command name]\` for more information`)
+                .setDescription(`Type \`<prefix>help [command name]\` for more information.\nReplace \`<prefix>\` with any of the possible prefixes.\nPossible prefixes: \`${message.guild.prefix}\``)
                 .setTimestamp()
                 .setColor(process.env.BASECOLOR);
 

@@ -121,6 +121,39 @@ class BuddyClientUtil extends ClientUtil {
 
         return guildChannel;
     }
+
+    emptyVoiceChannel() {
+        let embed = new this.client.util.embed()
+            .setColor('#f26666')
+            .setTitle('No user found in voice channel')
+            .setDescription(`Join a voice channel and try again.`)
+            .setTimestamp();
+
+        return embed;
+    }
+
+    noPlaying(){
+        let embed = new this.client.util.embed()
+            .setColor('#f26666')
+            .setTitle('There is currently nothing being played!')
+            .setDescription(`Add songs to the queue to resume playback.`)
+            .setTimestamp();
+
+        return embed;
+    }
+
+    capatalizeFirst(value){
+        return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    noNSFW(msg) {
+        let embed = new MessageEmbed()
+            .setTitle(`Not NSFW! 🔞`)
+            .setColor(`#f26666`)
+            .setDescription(`This channel is not **NSFW**!\nNSFW commands can only be used in **NSFW channels**!`)
+            .setTimestamp()
+        return embed;
+    }
 }
 
 module.exports = BuddyClientUtil;

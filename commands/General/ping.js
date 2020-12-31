@@ -5,7 +5,8 @@ const { MessageEmbed } = require('discord.js');
 class PingCommand extends Command {
     constructor() {
         super('ping', {
-            aliases: ['ping', 'latency']
+            aliases: ['ping', 'latency'],
+            category: 'General'
         });
         this.name = "ping"
         this.description = "Get the bot latency"

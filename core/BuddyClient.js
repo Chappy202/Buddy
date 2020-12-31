@@ -6,11 +6,12 @@ const {
 } = require('discord-akairo');
 const { ownerID, defaultPrefix } = require('../config.js');
 const config = require('../config.js');
-const { Manager } = require('@lavacord/discord.js');
+//const { Manager } = require('@lavacord/discord.js');
 const BuddyClientUtil = require('./BuddyClientUtil.js');
 const db = require('quick.db');
 const winston = require('winston');
 const utils = require('./utils.js');
+const { Player } = require('discord-music-player');
 
 require('../structures/Guild.js');
 require('../structures/GuildMember.js');
@@ -28,21 +29,22 @@ module.exports = class BuddyClient extends AkairoClient{
         this.logger = winston.createLogger({
             transports: [
                 new winston.transports.Console(),
-                new winston.transports.File({ filename: 'log' })
+                new winston.transports.File({ filename: 'error.log', level: 'error' }),
+                new winston.transports.File({ filename: 'combined.log' })
             ],
             format: winston.format.printf(
                 log => `[${utils.getToday()}][${log.level.toUpperCase()}] ${log.message}`
             )
         });
 
-        this.manager = new Manager(this, [
-            {
-                id: 'main',
-                host: process.env.LAVA_HOST,
-                port: process.env.LAVA_PORT,
-                password: process.env.LAVA_PASS
-            }
-        ]);
+        // this.manager = new Manager(this, [
+        //     {
+        //         id: 'main',
+        //         host: process.env.LAVA_HOST,
+        //         port: process.env.LAVA_PORT,
+        //         password: process.env.LAVA_PASS
+        //     }
+        // ]);
 
         this.commandHandler = new CommandHandler(this, {
             directory: path.join(__dirname, '..', 'commands/'),
@@ -63,21 +65,36 @@ module.exports = class BuddyClient extends AkairoClient{
         this.util = new BuddyClientUtil(this);
         this.config = config;
         this.db = db;
+
+        this.player = new Player(this, {
+            leaveOnEnd: false,
+            leaveOnStop: true,
+            leaveOnEmpty: false,
+            timeout: 5000,
+            quality: 'high',
+        });
+
+        this.listenerHandler.setEmitters({
+            commandHandler: this.commandHandler,
+            listenerHandler: this.listenerHandler,
+            //musicHandler: this.player,
+            process: process
+        });
     }
 
     async login(token){
-        this.commandHandler.loadAll();
         this.commandHandler.useListenerHandler(this.listenerHandler);
         this.listenerHandler.loadAll();
+        this.commandHandler.loadAll();
 
-        this.manager
+        /*this.manager
             .on('ready', node => console.log(`Node "${node.id}" is ready!`))
             .on('disconnect', (ws, node) =>
                 console.log(`Node "${node.id}" is trying to reconnect...`)
             )
             .on('error', (error, node) =>
                 console.log(`Node "${node.id}" ran into an error: ${error.message}`)
-            );
+            );*/
 
         return super.login(token);
     }

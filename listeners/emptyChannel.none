@@ -1,0 +1,19 @@
+const { Listener } = require('discord-akairo');
+
+module.exports = class emptyChannelListener extends Listener {
+    constructor() {
+        super('channelEmpty', {
+            emitter: 'musicHandler',
+            event: 'channelEmpty'
+        });
+    }
+
+    async exec(message, guildID) {
+        let embed = new this.client.util.embed()
+            .setColor('#f26666')
+            .setTitle('No user found in voice channel')
+            .setDescription(`Join a voice channel and try again.`)
+            .setTimestamp();
+        return message.util.send(embed);
+    }
+}
