@@ -11,3 +11,5 @@ json.sqlite
 combined.log
 
 error.log
+
+start.bat
