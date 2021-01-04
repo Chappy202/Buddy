@@ -1,12 +1,11 @@
 const { Command } = require('discord-akairo');
-const { MessageEmbed } = require('discord.js');
-
 
 class PlayCommand extends Command {
     constructor() {
         super('play', {
             aliases: ['play', 'p'],
             category: 'Music',
+            channel: 'guild',
             clientPermissions: ["SPEAK", "CONNECT"],
             * args() {
                 const query = yield {
@@ -28,84 +27,84 @@ class PlayCommand extends Command {
         });
         this.name = "play"
         this.description = "Play Music in a voice channel"
-        this.usage = "play"
-        this.example = "play"
+        this.usage = "play <song>"
+        this.example = "play perfect - ed sheeran"
     }
 
     async exec(message, { query }) {
-        const voiceChannel = message.member.voice.channel;
-        let isPlaying = this.client.player.isPlaying(message.guild.id);
+        const { channel } = message.member.voice;
+        if (!channel) {
+            return message.reply('you need to join a voice channel.');
+        };
 
-        if (!voiceChannel) {
-            return message.util.send(this.client.util.emptyVoiceChannel());
+        const player = await this.client.manager.create({
+            guild: message.guild.id,
+            voiceChannel: channel.id,
+            textChannel: message.channel.id
+        });
+
+        if (player.state !== "CONNECTED") {
+            player.connect();
         }
 
-        // Check whether or not link is a playlist
-        let playlistRegExp =  /^.*(youtu.be\/|list=)([^#\&\?]*).*/;
-        if (query.match(playlistRegExp)) {
-            let playlist = await this.client.player.playlist(message.guild.id, query, voiceChannel, 200, message.author.tag);
-            let song = playlist.song;
-            playlist = playlist.playlist;
-            //console.log(playlist);
-            let embed = new MessageEmbed()
-                .setTitle(`Added Playlist to Queue ➤ ${song.name}`)
-                .setURL(`${song.url}`)
-                .setColor(process.env.BASECOLOR)
-                .setDescription(`Songs: ${playlist.videoCount}\nAuthor: ${playlist.channel}`)
-                .setThumbnail(`${song.thumbnail}`)
-                .setTimestamp()
-                .setFooter(`Req by: ${(playlist.requestedBy) ? playlist.requestedBy : 'Unknown'}`);
-            await message.util.send(embed);
-
-            if (!isPlaying) {
-                let embed = new MessageEmbed()
-                    .setTitle(`Playing ➤ ${song.name}`)
-                    .setURL(`${song.url}`)
-                    .setColor(process.env.BASECOLOR)
-                    .setDescription(`Duration: ${song.duration}\nAuthor: ${song.author}`)
-                    .setThumbnail(`${song.thumbnail}`)
-                    .setTimestamp()
-                    .setFooter(`Req by: ${(song.requestedBy) ? song.requestedBy : 'Unknown'}`);
-                return message.util.send(embed);
+        let res;
+        try {
+            res = await player.search(query, message.author);
+            if (res.loadType === 'LOAD_FAILED'){
+                if (!player.queue.current) {
+                    player.destroy();
+                    throw res.exception;
+                }
             }
+        } catch(err) {
+            return message.reply(`there was an error while searching: ${err.message}`);
         }
 
-        // If there is a song playing, add the new one to the queue, otherwise start playing. (For a single song)
-        if (isPlaying) {
-            let song = await this.client.player.addToQueue(message.guild.id, query, {}, message.author.tag);
-            song = song.song;
-            let embed = new MessageEmbed()
-                .setTitle(`Added ➤ ${song.name}`)
-                .setURL(`${song.url}`)
-                .setColor(process.env.BASECOLOR)
-                .setDescription(`Duration: ${song.duration}\nAuthor: ${song.author}`)
-                .setThumbnail(`${song.thumbnail}`)
-                .setTimestamp()
-                .setFooter(`Req by: ${(song.requestedBy) ? song.requestedBy : 'Unknown'}`);
-            return message.util.send(embed);
-        } else {
-            try {
-                let song = await this.client.player.play(voiceChannel, query, {}, message.author.tag);
-                song = song.song;
-                //console.log(song);
-                let embed = new MessageEmbed()
-                    .setTitle(`Playing ➤ ${song.name}`)
-                    .setURL(`${song.url}`)
-                    .setColor(process.env.BASECOLOR)
-                    .setDescription(`Duration: ${song.duration}\nAuthor: ${song.author}`)
-                    .setThumbnail(`${song.thumbnail}`)
-                    .setTimestamp()
-                    .setFooter(`Req by: ${(song.requestedBy) ? song.requestedBy : 'Unknown'}`);
-                return message.util.send(embed);
-            } catch (err) {
-                this.client.logger.log('error', `Playback Error: ${err}`);
-                let embed = new MessageEmbed()
-                    .setTitle(`Something went wrong.`)
-                    .setColor(`#f26666`)
-                    .setDescription(`I was unable to play ${song.name}`)
-                    .setTimestamp()
-                return message.util.send(embed);
-            }
+        switch (res.loadType) {
+            case 'NO_MATCHES':
+                if (!player.queue.current) player.destroy();
+                return message.reply('there were no results found.');
+            case 'TRACK_LOADED':
+                player.queue.add(res.tracks[0]);
+                if (!player.playing || !player.paused || !player.queue.size) player.play();
+                return message.reply(`enqueuing \`${res.tracks[0].title}\`.`);
+            case 'PLAYLIST_LOADED':
+                player.queue.add(res.tracks);
+                if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) player.play();
+                return message.reply(`enqueuing playlist \`${res.playlist.name}\` with ${res.tracks.length} tracks.`);
+            case 'SEARCH_RESULT':
+                let max = 5, collected, filter = (m) => m.author.id === message.author.id && /^(\d+|end)$/i.test(m.content);
+                if (res.tracks.length < max) max = res.tracks.length;
+
+                const results = res.tracks
+                    .slice(0, max)
+                    .map((track, index) => `${++index} - \`${track.title}\``)
+                    .join('\n');
+
+                message.channel.send(results);
+
+                try {
+                    collected = await message.channel.awaitMessages(filter, { max: 1, time: 30e3, errors: ['time'] });
+                } catch (e) {
+                    if (!player.queue.current) player.destroy();
+                    return message.reply("you didn't provide a selection.");
+                }
+
+                const first = collected.first().content;
+
+                if (first.toLowerCase() === 'end') {
+                    if (!player.queue.current) player.destroy();
+                    return message.channel.send('Cancelled selection.');
+                }
+
+                const index = Number(first) - 1;
+                if (index < 0 || index > max - 1) return message.reply(`the number you provided too small or too big (1-${max}).`);
+
+                const track = res.tracks[index];
+                player.queue.add(track);
+
+                if (!player.playing && !player.paused && !player.queue.size) player.play();
+                return message.reply(`enqueuing \`${track.title}\`.`);
         }
     }
 }

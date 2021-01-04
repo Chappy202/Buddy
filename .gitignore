@@ -13,3 +13,5 @@ combined.log
 error.log
 
 start.bat
+
+lavalink/application.yml

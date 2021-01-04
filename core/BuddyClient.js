@@ -6,12 +6,12 @@ const {
 } = require('discord-akairo');
 const { ownerID, defaultPrefix } = require('../config.js');
 const config = require('../config.js');
-//const { Manager } = require('@lavacord/discord.js');
 const BuddyClientUtil = require('./BuddyClientUtil.js');
 const db = require('quick.db');
 const winston = require('winston');
 const utils = require('./utils.js');
-const { Player } = require('discord-music-player');
+const { Manager } = require('erela.js');
+const lavacord = require('@lavacord/discord.js');
 
 require('../structures/Guild.js');
 require('../structures/GuildMember.js');
@@ -37,15 +37,6 @@ module.exports = class BuddyClient extends AkairoClient{
             )
         });
 
-        // this.manager = new Manager(this, [
-        //     {
-        //         id: 'main',
-        //         host: process.env.LAVA_HOST,
-        //         port: process.env.LAVA_PORT,
-        //         password: process.env.LAVA_PASS
-        //     }
-        // ]);
-
         this.commandHandler = new CommandHandler(this, {
             directory: path.join(__dirname, '..', 'commands/'),
             handleEdits: true,
@@ -62,21 +53,44 @@ module.exports = class BuddyClient extends AkairoClient{
             directory: path.join(__dirname, '..', 'listeners/')
         });
 
+        this.voice = new lavacord.Manager(this, [{
+            id: 'main',
+            host: process.env.LAVA_HOST,
+            port: process.env.LAVA_PORT,
+            password: process.env.LAVA_PASS
+        }]);
+
         this.util = new BuddyClientUtil(this);
+
+        this.manager = new Manager({
+            nodes: [{
+                host: process.env.LAVA_HOST,
+                password: process.env.LAVA_PASS,
+                port: parseInt(process.env.LAVA_PORT),
+                retryDelay: parseInt(process.env.RETRY_DELAY),
+            }],
+            autoPlay: true,
+            send: (id, payload) => {
+                const guild = this.guilds.cache.get(id);
+                if (guild) guild.shard.send(payload);
+            }
+        });
+
         this.config = config;
         this.db = db;
 
-        this.player = new Player(this, {
+        /*this.player = new Player(this, {
             leaveOnEnd: false,
             leaveOnStop: true,
             leaveOnEmpty: false,
             timeout: 5000,
             quality: 'high',
-        });
+        });*/
 
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
             listenerHandler: this.listenerHandler,
+            musicHandler: this.manager,
             //musicHandler: this.player,
             process: process
         });
