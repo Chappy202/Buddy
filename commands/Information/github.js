@@ -21,7 +21,7 @@ class GitHubCommand extends Command {
             .setThumbnail('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png')
             .setDescription(`**You can find my GitHub repo here:** https://github.com/Chappy202/Buddy`)
             .setTimestamp()
-            .setFooter('GitHub Repository', 'https://chappy202.com/bobby-project/images/avatar.png');
+            .setFooter('GitHub Repository', 'https://chappy202.com/buddy/images/face.png');
 
         return message.util.send(output);
     }
