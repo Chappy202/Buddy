@@ -54,10 +54,10 @@ module.exports = class BuddyClient extends AkairoClient{
 
         this.player = new Player(this, {
             leaveOnEnd: true,
-            leaveOnEndCooldown: 300000,
+            leaveOnEndCooldown: 5000,
             leaveOnStop: true,
             leaveOnEmpty: true,
-            leaveOnEmptyCooldown: 120000,
+            leaveOnEmptyCooldown: 2000,
             autoSelfDeaf: true
         });
 
