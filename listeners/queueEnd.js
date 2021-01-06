@@ -1,6 +1,6 @@
 const { Listener } = require('discord-akairo');
 
-module.exports = class QueueEnd extends Listener {
+module.exports = class QueueEndListener extends Listener {
     constructor() {
         super('queueEnd', {
             emitter: 'musicHandler',
@@ -8,9 +8,13 @@ module.exports = class QueueEnd extends Listener {
         });
     }
 
-    async exec(player) {
-        const channel = this.client.channels.cache.get(player.textChannel);
-        channel.send(`The queue has ended.`);
-        player.destroy();
+    async exec(message, queue) {
+        let output = this.client.util.embed()
+            .setColor(process.env.BASECOLOR)
+            .setTitle(`The queue is empty`)
+            .setDescription(`Add more songs to resume playback.`)
+            .setTimestamp()
+
+        return message.util.send(output);
     }
 }

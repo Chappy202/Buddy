@@ -9,6 +9,14 @@ module.exports = class RawListener extends Listener {
     }
 
     async exec(d) {
-        this.client.manager.updateVoiceState(d);
+        //console.log('Raw event fired');
+        //this.client.manager.updateVoiceState(d);
+        /*try {
+            if (this.client.manager) {
+                this.client.manager.updateVoiceState(d);
+            }
+        } catch (err) {
+            console.log(err)
+        }*/
     }
 }

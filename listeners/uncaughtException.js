@@ -9,6 +9,7 @@ module.exports = class uncaughtExceptionListener extends Listener {
     }
 
     async exec(error) {
+        console.log(error)
             this.client.logger.log('error', `UncaughtException: ${error}`);
     }
 }

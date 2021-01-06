@@ -10,8 +10,7 @@ const BuddyClientUtil = require('./BuddyClientUtil.js');
 const db = require('quick.db');
 const winston = require('winston');
 const utils = require('./utils.js');
-const { Manager } = require('erela.js');
-const lavacord = require('@lavacord/discord.js');
+const { Player } = require('discord-player');
 
 require('../structures/Guild.js');
 require('../structures/GuildMember.js');
@@ -53,28 +52,16 @@ module.exports = class BuddyClient extends AkairoClient{
             directory: path.join(__dirname, '..', 'listeners/')
         });
 
-        this.voice = new lavacord.Manager(this, [{
-            id: 'main',
-            host: process.env.LAVA_HOST,
-            port: process.env.LAVA_PORT,
-            password: process.env.LAVA_PASS
-        }]);
+        this.player = new Player(this, {
+            leaveOnEnd: true,
+            leaveOnEndCooldown: 300000,
+            leaveOnStop: true,
+            leaveOnEmpty: true,
+            leaveOnEmptyCooldown: 120000,
+            autoSelfDeaf: true
+        });
 
         this.util = new BuddyClientUtil(this);
-
-        this.manager = new Manager({
-            nodes: [{
-                host: process.env.LAVA_HOST,
-                password: process.env.LAVA_PASS,
-                port: parseInt(process.env.LAVA_PORT),
-                retryDelay: parseInt(process.env.RETRY_DELAY),
-            }],
-            autoPlay: true,
-            send: (id, payload) => {
-                const guild = this.guilds.cache.get(id);
-                if (guild) guild.shard.send(payload);
-            }
-        });
 
         this.config = config;
         this.db = db;
@@ -90,8 +77,7 @@ module.exports = class BuddyClient extends AkairoClient{
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
             listenerHandler: this.listenerHandler,
-            musicHandler: this.manager,
-            //musicHandler: this.player,
+            musicHandler: this.player,
             process: process
         });
     }

@@ -33,8 +33,6 @@ module.exports = class ReadyListener extends Listener {
             });
         }, 30000);
 
-        this.client.config
-        await this.client.voice.connect();
-        this.client.manager.init(this.client.user.id);
+        this.client.config;
     }
 }
