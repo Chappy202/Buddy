@@ -523,5 +523,12 @@
     "nsfw": false,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "goodpussy",
+    "file": "goodpussy.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]
