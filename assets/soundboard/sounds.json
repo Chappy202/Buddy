@@ -99,7 +99,7 @@
   },
   {
     "name": "doinginswamp",
-    "file": "doinginspawn.mp3",
+    "file": "doinginswamp.mp3",
     "nsfw": false,
     "volumeWarning": false,
     "volume": 100
@@ -295,7 +295,7 @@
   },
   {
     "name": "moan",
-    "file": "moan.mp3",
+    "file": "moaning.mp3",
     "nsfw": true,
     "volumeWarning": true,
     "volume": 60
@@ -351,7 +351,7 @@
   },
   {
     "name": "oniichan",
-    "file": "oniichan.mp3",
+    "file": "onii-chan.mp3",
     "nsfw": true,
     "volumeWarning": false,
     "volume": 100
@@ -528,6 +528,20 @@
     "name": "goodpussy",
     "file": "goodpussy.mp3",
     "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "whatdidhesay",
+    "file": "whatdidhesay.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "vibing",
+    "file": "vibing.mp3",
+    "nsfw": false,
     "volumeWarning": false,
     "volume": 100
   }
