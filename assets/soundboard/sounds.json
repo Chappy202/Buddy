@@ -1,0 +1,527 @@
+[
+  {
+  "name": "21",
+  "file": "21.mp3",
+  "nsfw": false,
+  "volumeWarning": false,
+  "volume": 100
+  },
+  {
+    "name": "ahfuck",
+    "file": "ahfuck.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ahh",
+    "file": "ahh.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 45
+  },
+  {
+    "name": "alia",
+    "file": "alia.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 45
+  },
+  {
+    "name": "awkward",
+    "file": "awkward.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "awshit",
+    "file": "awshit.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "bruh",
+    "file": "bruh.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "canttouchthis",
+    "file": "canttouchthis.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "copystrike",
+    "file": "copystrike.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "creeper",
+    "file": "creeper.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "daddy",
+    "file": "daddy.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "dejavu",
+    "file": "dejavu.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "depress",
+    "file": "depress.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 100
+  },
+  {
+    "name": "despacito",
+    "file": "despacito.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "doinginswamp",
+    "file": "doinginspawn.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "englishmontherfucker",
+    "file": "englishmotherfucker.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "error",
+    "file": "error.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fap",
+    "file": "fap.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fart",
+    "file": "fart.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fartreverb",
+    "file": "fartreverb.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fastasfboi",
+    "file": "fastasfboi.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fbi",
+    "file": "fbi.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 100
+  },
+  {
+    "name": "firefly",
+    "file": "firefly.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 100
+  },
+  {
+    "name": "ahfuck",
+    "file": "ahfuck.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fooz",
+    "file": "fooz.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ahfuck",
+    "file": "ahfuck.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fucknig",
+    "file": "fucknig.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fuckoff",
+    "file": "fuckoff.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "gay",
+    "file": "gay.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "gotchabitch",
+    "file": "gotchabitch.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "gothim",
+    "file": "gothim.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 100
+  },
+  {
+    "name": "hefuckedup",
+    "file": "hefuckedup.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "howyouare",
+    "file": "howyouare.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ifuckedup",
+    "file": "ifuckedup.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ikillyou",
+    "file": "ikillyou.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "illuminati",
+    "file": "illuminati.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "jeff",
+    "file": "jeff.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "join",
+    "file": "join.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "lookatthisdude",
+    "file": "lookatthisdude.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "mcdamage",
+    "file": "mcdamage.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "memefinal",
+    "file": "memefinal.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "moanfart",
+    "file": "moanfart.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "moan",
+    "file": "moan.mp3",
+    "nsfw": true,
+    "volumeWarning": true,
+    "volume": 60
+  },
+  {
+    "name": "nani",
+    "file": "nani.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 60
+  },
+  {
+    "name": "noice",
+    "file": "noice.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ahfuck",
+    "file": "ahfuck.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "nomnom",
+    "file": "nomnom.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "nuclearfart",
+    "file": "nuclearfart.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ohh",
+    "file": "ohh.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ohke",
+    "file": "ohke.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "oniichan",
+    "file": "oniichan.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "oof",
+    "file": "oof.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "pussy",
+    "file": "pussy.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "quack",
+    "file": "quack.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "reee",
+    "file": "reee.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "rekt",
+    "file": "rekt.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "sadviolin",
+    "file": "sadviolin.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "saywhat",
+    "file": "saywhat.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "seinfeld",
+    "file": "seinfeld.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "shrimp",
+    "file": "shrimp.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ahfuck",
+    "file": "ahfuck.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 100
+  },
+  {
+    "name": "shutdown",
+    "file": "shutdown.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "spaghet",
+    "file": "spaghet.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "startup",
+    "file": "startup.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "suckyourmom",
+    "file": "suckyourmom.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "thomas",
+    "file": "thomas.mp3",
+    "nsfw": false,
+    "volumeWarning": true,
+    "volume": 100
+  },
+  {
+    "name": "ahfuck",
+    "file": "ahfuck.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "triplekill",
+    "file": "triplekill.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "tralala",
+    "file": "tralala.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "wasted",
+    "file": "wasted.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "wetfart",
+    "file": "wetfart.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "wow",
+    "file": "wow.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "yeahboy",
+    "file": "yeahboy.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "yeet",
+    "file": "yeet.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "zedther",
+    "file": "zedther.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  }
+]
