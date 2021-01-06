@@ -448,8 +448,8 @@
     "volume": 100
   },
   {
-    "name": "suckyourmom",
-    "file": "suckyourmom.mp3",
+    "name": "suckyourmum",
+    "file": "suckyourmum.mp3",
     "nsfw": true,
     "volumeWarning": false,
     "volume": 100
@@ -470,7 +470,7 @@
   },
   {
     "name": "triplekill",
-    "file": "triplekill.mp3",
+    "file": "tiplekill.mp3",
     "nsfw": false,
     "volumeWarning": false,
     "volume": 100
@@ -542,6 +542,181 @@
     "name": "vibing",
     "file": "vibing.mp3",
     "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "iloveyouandimissyou",
+    "file": "IloveyouandImissyou.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "firstblood",
+    "file": "firstblood.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "blackhole",
+    "file": "blackhole.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "monsterkill",
+    "file": "monsterkill.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ora",
+    "file": "ora.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "doublekill",
+    "file": "doublekill.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "animesong",
+    "file": "animesong.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "rampage",
+    "file": "rampage.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "absoluteclassic",
+    "file": "absoluteclassic.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "godlike",
+    "file": "godlike.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "snoop",
+    "file": "snoop.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "holyshit",
+    "file": "holyshit.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "ultrakill",
+    "file": "ultrakill.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "rape",
+    "file": "rape.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "poi",
+    "file": "poipoipoi.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "omgvine",
+    "file": "omgvine.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "cyka",
+    "file": "cyka.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "dino",
+    "file": "dino.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "fuckme",
+    "file": "fuckme.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "heeboi",
+    "file": "heeboi.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "oohlookatitgo",
+    "file": "oohlookatitgo.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "yeahsniper",
+    "file": "yeahsniper.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "gas",
+    "file": "gas.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "myfriend",
+    "file": "myfriend.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "shecumming",
+    "file": "shecumming.mp3",
+    "nsfw": true,
     "volumeWarning": false,
     "volume": 100
   }
