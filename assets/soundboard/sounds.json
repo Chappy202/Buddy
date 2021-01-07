@@ -733,5 +733,12 @@
     "nsfw": true,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "badbitch",
+    "file": "badbitch.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]
