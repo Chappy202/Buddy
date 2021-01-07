@@ -18,10 +18,26 @@ class StopCommand extends Command {
     async exec(message) {
         const queue = await this.client.player.getQueue(message);
         const voice = message.member.voice.channel;
+        if (!voice) {
+            const embed = this.client.util.embed()
+                .setTitle(`No user found in voice channel`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`Join a voice channel and try again.`)
+                .setTimestamp()
+            return message.util.send(embed);
+        }
+        if (!queue) {
+            const embed = this.client.util.embed()
+                .setTitle(`No song playing`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`No songs are currently playing in this server.`)
+                .setTimestamp()
+            return message.util.send(embed);
+        }
         const members = voice.members.filter((m) => !m.user.bot);
         const embed = this.client.util.embed()
             .setTitle(`Stopped`)
-            .setDescription(`Music Stopped:stop_button:\nCleared Queue :wastebasket:\nLeft the channel.`)
+            .setDescription(`Music Stopped :stop_button:\nCleared Queue :wastebasket:\n*Left the channel.*`)
             .setTimestamp()
             .setFooter(`Req by: ${message.author.tag}`)
 

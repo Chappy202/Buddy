@@ -86,7 +86,7 @@ class SoundboardCommand extends Command {
             dispatcher.on('start', () => {
                 const output = this.client.util.embed()
                     .setTitle(`Soundboard`)
-                    .setDescription(`Playing **${sound}**`)
+                    .setDescription(`Playing **${sound}**\n*Use \`sb stop\` to stop playing.*`)
                     .setFooter(`Req by: ${reqby.tag}`)
                     .setTimestamp()
 
