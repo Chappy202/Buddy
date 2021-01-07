@@ -53,7 +53,7 @@ module.exports = class BuddyClient extends AkairoClient{
             directory: path.join(__dirname, '..', 'listeners/')
         });
 
-        this.giveaway = new GiveawaysManager(this, {
+        /*this.giveaway = new GiveawaysManager(this, {
             storage: path.join(__dirname, '..', 'assets/json/giveaways.JSON'),
             updateCountdownEvery: 10000,
             hasGuildMembersIntent: false,
@@ -63,7 +63,7 @@ module.exports = class BuddyClient extends AkairoClient{
                 embedColor: process.env.BASECOLOR,
                 reaction: '🎉'
             }
-        });
+        });*/
 
         this.player = new Player(this, {
             leaveOnEnd: true,

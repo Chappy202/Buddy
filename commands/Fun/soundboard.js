@@ -111,17 +111,19 @@ class SoundboardCommand extends Command {
 
     }
 
-    async checkExist(item){
+    checkExist(item){
         const allSounds = util.getAll();
+        let exist = false;
         allSounds.forEach(sound => {
             if (sound.name === item) {
                 //console.log(`../../assets/soundboard/${sound.file}`);
                 let check = fs.existsSync(path.join(__dirname, '../..', `assets/soundboard/${sound.file}`));
                 if (check){
-                    return true;
+                    exist = true;
                 }
             }
         });
+        return exist;
     }
 
     async exec(message, args) {
@@ -156,6 +158,7 @@ class SoundboardCommand extends Command {
             }
 
             if (this.checkExist(input)){
+                //console.log(this.checkExist(input))
                 if (voice){
                     const connection = await voice.join();
                     this.playSound(input, message, connection, message.author);
