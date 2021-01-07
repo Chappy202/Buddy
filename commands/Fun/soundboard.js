@@ -168,7 +168,7 @@ class SoundboardCommand extends Command {
                 const embed = this.client.util.embed()
                     .setTitle(`Unable to find specified sound`)
                     .setColor(process.env.ERRORCOLOR)
-                    .setDescription(`I couldn't find the sound \`${args.input}\'\nMake sure you spelled it correctly!`)
+                    .setDescription(`I couldn't find the sound \`${args.input}\`\nMake sure you spelled it correctly!`)
                     .setTimestamp()
                 return message.util.send(embed);
             }
