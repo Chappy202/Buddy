@@ -38,7 +38,7 @@ class FilterCommand extends Command {
         if (!voice) {
             const embed = this.client.util.embed()
                 .setTitle(`No user found in voice channel`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Join a voice channel and try again.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -47,7 +47,7 @@ class FilterCommand extends Command {
         if (!queue) {
             const embed = this.client.util.embed()
                 .setTitle(`No song playing`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`No songs are currently playing in this server.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -58,7 +58,7 @@ class FilterCommand extends Command {
         if (!filter) {
             const embed = this.client.util.embed()
                 .setTitle(`No filter specified`)
-                .setColor(`#f26666`)
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Please specify a valid filter to enable or disable! (or send \`<prefix>filters\` to get the statuses of the filters)`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -69,7 +69,7 @@ class FilterCommand extends Command {
         if (!filterToUpdate) {
             const embed = this.client.util.embed()
                 .setTitle(`Unknown Filter`)
-                .setColor(`#f26666`)
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`This filter doesn't exist! Send \`<prefix>filters\` to get the list!`)
                 .setTimestamp()
             return message.util.send(embed);

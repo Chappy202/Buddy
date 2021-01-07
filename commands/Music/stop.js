@@ -61,7 +61,7 @@ class StopCommand extends Command {
             collector.on("end", (collected, isDone) => {
                 if (isDone) {
                     const output = this.client.util.embed()
-                        .setColor(`#f26666`)
+                        .setColor(process.env.ERRORCOLOR)
                         .setTitle(`Time is up`)
                         .setDescription(`Time's up! Please send the command again!`)
                         .setTimestamp()

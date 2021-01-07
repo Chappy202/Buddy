@@ -11,6 +11,7 @@ const db = require('quick.db');
 const winston = require('winston');
 const utils = require('./utils.js');
 const { Player } = require('discord-player');
+const { GiveawaysManager } = require('discord-giveaways');
 
 require('../structures/Guild.js');
 require('../structures/GuildMember.js');
@@ -50,6 +51,18 @@ module.exports = class BuddyClient extends AkairoClient{
 
         this.listenerHandler = new ListenerHandler(this, {
             directory: path.join(__dirname, '..', 'listeners/')
+        });
+
+        this.giveaway = new GiveawaysManager(this, {
+            storage: path.join(__dirname, '..', 'assets/json/giveaways.JSON'),
+            updateCountdownEvery: 10000,
+            hasGuildMembersIntent: false,
+            default: {
+                botsCanWin: false,
+                exemptPermissions: ['ADMINISTRATOR'],
+                embedColor: process.env.BASECOLOR,
+                reaction: '🎉'
+            }
         });
 
         this.player = new Player(this, {

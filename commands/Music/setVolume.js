@@ -26,7 +26,7 @@ class SetVolumeCommand extends Command {
         if (!voice) {
             const embed = this.client.util.embed()
                 .setTitle(`No user found in voice channel`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Join a voice channel and try again.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -35,7 +35,7 @@ class SetVolumeCommand extends Command {
         if (!queue) {
             const embed = this.client.util.embed()
                 .setTitle(`No song playing`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`No songs are currently playing in this server.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -44,7 +44,7 @@ class SetVolumeCommand extends Command {
         if (!args.volume || isNaN(args.volume) || args.volume === 'Infinity') {
             const embed = this.client.util.embed()
                 .setTitle(`Invalid Number`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Please enter a valid number!`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -53,7 +53,7 @@ class SetVolumeCommand extends Command {
         if (Math.round(parseInt(args.volume)) < 1 || Math.round(parseInt(args.volume)) > 100) {
             const embed = this.client.util.embed()
                 .setTitle(`Invalid Number`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Please enter a valid number (between 1 and 100)`)
                 .setTimestamp()
             return message.util.send(embed);

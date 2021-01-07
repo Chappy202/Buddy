@@ -10,7 +10,7 @@ module.exports = class NoResultListener extends Listener {
 
     async exec(message, query) {
         let output = this.client.util.embed()
-            .setColor(`#f26666`)
+            .setColor(process.env.ERRORCOLOR)
             .setTitle(`Unable to find the search`)
             .setDescription(`I was unable to find results for **${query}**`)
             .setTimestamp()

@@ -21,13 +21,13 @@ class SoundboardCommand extends Command {
 
         this.name = "soundboard"
         this.description = "Plays a sound. Use `soundboard help` for a list of possible sounds."
-        this.usage = "soundboard [sound]"
+        this.usage = "soundboard [sound|help|stop]"
         this.example = "soundboard jeff"
     }
 
     async displayHelp(message){
         const nsfw = util.getNSFW();
-        const sfw = util.getSFW();
+        //const sfw = util.getSFW();
         const volumeWarning = util.getVolumeWarning();
         const normal = util.getNormal();
 
@@ -85,7 +85,8 @@ class SoundboardCommand extends Command {
             const dispatcher = connection.play(soundFile, { volume: soundItem.volume/100 });
             dispatcher.on('start', () => {
                 const output = this.client.util.embed()
-                    .setTitle(`Playing ➤ ${sound}`)
+                    .setTitle(`Soundboard`)
+                    .setDescription(`Playing **${sound}**`)
                     .setFooter(`Req by: ${reqby.tag}`)
                     .setTimestamp()
 
@@ -96,7 +97,7 @@ class SoundboardCommand extends Command {
                 this.client.logger.log('error', `Soundboard error: ${err}`);
                 const embed = this.client.util.embed()
                     .setTitle(`Something went wrong`)
-                    .setColor(`#f26666`)
+                    .setColor(process.env.ERRORCOLOR)
                     .setDescription(`Something went wrong while trying to play ${sound}`)
                     .setTimestamp()
                 message.util.send(embed);
@@ -148,7 +149,7 @@ class SoundboardCommand extends Command {
             if (!voice) {
                 const embed = this.client.util.embed()
                     .setTitle(`No user found in voice channel`)
-                    .setColor('#f26666')
+                    .setColor(process.env.ERRORCOLOR)
                     .setDescription(`Join a voice channel and try again.`)
                     .setTimestamp()
                 return message.util.send(embed);
@@ -163,7 +164,7 @@ class SoundboardCommand extends Command {
             } else {
                 const embed = this.client.util.embed()
                     .setTitle(`Unable to find specified sound`)
-                    .setColor(`#f26666`)
+                    .setColor(process.env.ERRORCOLOR)
                     .setDescription(`I couldn't find the sound \`${args.input}\'\nMake sure you spelled it correctly!`)
                     .setTimestamp()
                 return message.util.send(embed);

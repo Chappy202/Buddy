@@ -35,7 +35,7 @@ class PlayCommand extends Command {
         if (!query) {
             const embed = this.client.util.embed()
                 .setTitle(`No song specified`)
-                .setColor(`#f26666`)
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Please provide a song name or link.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -44,7 +44,7 @@ class PlayCommand extends Command {
         if (!voice) {
             const embed = this.client.util.embed()
                 .setTitle(`No user found in voice channel`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Join a voice channel and try again.`)
                 .setTimestamp()
             return message.util.send(embed);

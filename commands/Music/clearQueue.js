@@ -31,7 +31,7 @@ class ClearQueueCommand extends Command {
         if (!queue) {
             const embed = this.client.util.embed()
                 .setTitle(`Empty Queue`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`The queue is already empty!`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -40,7 +40,7 @@ class ClearQueueCommand extends Command {
         if (queue.tracks.length <= 1) {
             const embed = this.client.util.embed()
                 .setTitle(`Not enough songs`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`There is only one song in the queue.`)
                 .setTimestamp()
             return message.util.send(embed);

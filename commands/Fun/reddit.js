@@ -46,7 +46,7 @@ class RedditCommand extends Command {
             if (response.error === 404) {
                 output = this.client.util.embed()
                     .setTitle(`Invalid Subreddit`)
-                    .setColor(`#f26666`)
+                    .setColor(process.env.ERRORCOLOR)
                     .setDescription(`I couldn't find the subreddit that you are looking for.`)
                     .setTimestamp()
                     .setFooter(
@@ -59,7 +59,7 @@ class RedditCommand extends Command {
             if (response.data.dist === 0) {
                 output = this.client.util.embed()
                     .setTitle(`Invalid Subreddit`)
-                    .setColor(`#f26666`)
+                    .setColor(process.env.ERRORCOLOR)
                     .setDescription(`I couldn't find the subreddit that you are looking for.`)
                     .setTimestamp()
                     .setFooter(
@@ -74,7 +74,7 @@ class RedditCommand extends Command {
             if (response.data.children[i].data.over_18 == true && !message.channel.nsfw) {
                 output = this.client.util.embed()
                     .setTitle(`NSFW`)
-                    .setColor(`#f26666`)
+                    .setColor(process.env.ERRORCOLOR)
                     .setDescription(`I am unable to send this content here. This channel is not an NSFW channel!`)
                     .setTimestamp()
                     .setFooter(

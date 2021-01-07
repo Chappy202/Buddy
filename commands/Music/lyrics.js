@@ -37,7 +37,7 @@ class LyricsCommand extends Command {
         if (!query){
             const embed = this.client.util.embed()
                 .setTitle(`No song specified`)
-                .setColor(`#f26666`)
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Please provide a song name`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -69,7 +69,7 @@ class LyricsCommand extends Command {
             } else if(!lyrics.length) {
                 const em = this.client.util.embed()
                     .setTitle(`No lyrics found`)
-                    .setColor('#f26666')
+                    .setColor(process.env.ERRORCOLOR)
                     .setDescription(`I couldn't find any lyrics for \`${query}\``)
                     .setTimestamp()
                 return m.edit(em);
@@ -80,7 +80,7 @@ class LyricsCommand extends Command {
         } catch(e) {
             const em = this.client.util.embed()
                 .setTitle(`No lyrics found`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`I couldn't find any lyrics for \`${query}\``)
                 .setTimestamp()
             return message.util.send(em);

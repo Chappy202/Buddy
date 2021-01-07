@@ -29,7 +29,7 @@ class PurgeCommand extends Command {
 
         if (channel.type === 'dm') {
             let output = this.client.util.embed()
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`This command cannot be used in direct messages.`)
                 .setTimestamp()
 
@@ -38,7 +38,7 @@ class PurgeCommand extends Command {
 
         if (count > 100 || !count) {
             let output = this.client.util.embed()
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setTitle(`Number invalid`)
                 .setDescription(`You either didn't enter a number, or you entered a number larger than 100.`)
                 .setTimestamp()
@@ -60,7 +60,7 @@ class PurgeCommand extends Command {
             });
         } catch (err) {
             let output = this.client.util.embed()
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setTitle(`Failed to delete messages`)
                 .setDescription(`I was unable to delete the messages`)
                 .setTimestamp()

@@ -10,7 +10,7 @@ module.exports = class EmptyChannelListener extends Listener {
 
     async exec(message, queue) {
         let output = this.client.util.embed()
-            .setColor(`#f26666`)
+            .setColor(process.env.ERRORCOLOR)
             .setTitle(`All users left the voice channel.`)
             .setDescription(`Please join a voice channel in order to listen to music.`)
             .setTimestamp()

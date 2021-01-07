@@ -21,7 +21,7 @@ class BackCommand extends Command {
         if (!voice) {
             const embed = this.client.util.embed()
                 .setTitle(`No user found in voice channel`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Join a voice channel and try again.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -30,7 +30,7 @@ class BackCommand extends Command {
         if (!queue) {
             const embed = this.client.util.embed()
                 .setTitle(`No song playing`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`"No songs are currently playing in this server.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -39,7 +39,7 @@ class BackCommand extends Command {
         if (!queue.previousTracks[0]){
             const embed = this.client.util.embed()
                 .setTitle(`No previous song`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`There was no song before this one!`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -87,7 +87,7 @@ class BackCommand extends Command {
             collector.on("end", (collected, isDone) => {
                 if (isDone) {
                     const output = this.client.util.embed()
-                        .setColor(`#f26666`)
+                        .setColor(process.env.ERRORCOLOR)
                         .setTitle(`Time is up`)
                         .setDescription(`Time's up! Please send the command again!`)
                         .setTimestamp()

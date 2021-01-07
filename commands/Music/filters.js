@@ -22,7 +22,7 @@ class FiltersCommand extends Command {
         if (!voice) {
             const embed = this.client.util.embed()
                 .setTitle(`No user found in voice channel`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Join a voice channel and try again.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -31,7 +31,7 @@ class FiltersCommand extends Command {
         if (!queue) {
             const embed = this.client.util.embed()
                 .setTitle(`No song playing`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`No songs are currently playing in this server.`)
                 .setTimestamp()
             return message.util.send(embed);

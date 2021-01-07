@@ -1,6 +1,6 @@
 {
   "name": "buddy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Official public Moderation and fun Discord bot that provides various features, tools",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "cheerio": "^1.0.0-rc.5",
     "coingecko-api": "^1.0.10",
     "discord-akairo": "^8.1.0",
+    "discord-giveaways": "^4.4.2",
     "discord-paginationembed": "^2.1.0",
     "discord-player": "^3.2.1",
     "discord.js": "^12.5.1",
@@ -37,6 +38,7 @@
     "lavalink": "^2.11.0",
     "mkdirp": "^1.0.4",
     "moment": "^2.29.1",
+    "ms": "^2.1.3",
     "nekobot-api": "^2.0.1",
     "nekos.life": "^2.0.7",
     "node-fetch": "^2.6.1",

@@ -22,7 +22,7 @@ class ReloadCommand extends Command {
     async exec(message, args) {
         if (args.ArgOne === null) {
             let output = new Discord.MessageEmbed()
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setTitle(`No argument provided`)
                 .setDescription(`**Possible arguments:** all, [command name]`)
                 .setTimestamp()

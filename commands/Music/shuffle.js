@@ -20,7 +20,7 @@ class ShuffleCommand extends Command {
         if (!voice) {
             const embed = this.client.util.embed()
                 .setTitle(`No user found in voice channel`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`Join a voice channel and try again.`)
                 .setTimestamp()
             return message.util.send(embed);
@@ -29,7 +29,7 @@ class ShuffleCommand extends Command {
         if (!queue) {
             const embed = this.client.util.embed()
                 .setTitle(`Empty Queue`)
-                .setColor('#f26666')
+                .setColor(process.env.ERRORCOLOR)
                 .setDescription(`There are no songs in the queue to shuffle!`)
                 .setTimestamp()
             return message.util.send(embed);

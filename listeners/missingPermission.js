@@ -10,7 +10,7 @@ module.exports = class missingPermissionListener extends Listener {
 
     async exec(message, command, type, missing) {
         let embed = this.client.util.embed()
-            .setColor('#f26666')
+            .setColor(process.env.ERRORCOLOR)
             .setTitle('Mission permission')
             .setDescription(`I do not have the required permissions for ${command.id}!`)
             .addField('Missing permission:', missing)
