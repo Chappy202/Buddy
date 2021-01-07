@@ -719,5 +719,12 @@
     "nsfw": true,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "disgusting",
+    "file": "disgusting.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]
