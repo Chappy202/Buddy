@@ -726,5 +726,12 @@
     "nsfw": true,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "hello",
+    "file": "hellomotherfucker.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]
