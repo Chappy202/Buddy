@@ -13,6 +13,7 @@ const winston = require('winston');
 const utils = require('./utils.js');
 const { Player } = require('discord-player');
 const { GiveawaysManager } = require('discord-giveaways');
+const malScraper = require('mal-scraper');
 
 require('../structures/Guild.js');
 require('../structures/GuildMember.js');
@@ -57,6 +58,9 @@ module.exports = class BuddyClient extends AkairoClient{
         this.listenerHandler = new ListenerHandler(this, {
             directory: path.join(__dirname, '..', 'listeners/')
         });
+
+        // Anime
+        this.anime = malScraper;
 
         /*this.giveaway = new GiveawaysManager(this, {
             storage: path.join(__dirname, '..', 'assets/json/giveaways.JSON'),
