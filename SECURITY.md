@@ -12,4 +12,4 @@ The below specified versions are currently supported in terms of updates and pat
 
 **Discord:** Chappy#3353
 **Email:** [Chappy Primary](mailto:jj@chappy202.com)
-**Discord Server:** [Chappy's Lounge])(https://discord.gg/tFhabWcJrX)
+**Discord Server:** [Chappy's Lounge](https://discord.gg/tFhabWcJrX)
