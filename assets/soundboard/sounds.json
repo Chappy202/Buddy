@@ -740,5 +740,12 @@
     "nsfw": false,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "gotem",
+    "file": "gotem.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]

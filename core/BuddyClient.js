@@ -2,7 +2,8 @@ const path = require('path');
 const {
     AkairoClient,
     CommandHandler,
-    ListenerHandler
+    ListenerHandler,
+    InhibitorHandler
 } = require('discord-akairo');
 const { ownerID, defaultPrefix } = require('../config.js');
 const config = require('../config.js');
@@ -47,6 +48,10 @@ module.exports = class BuddyClient extends AkairoClient{
             blockClient: true,
             defaultCooldown: 2000,
             prefix: message => (message.guild ? message.guild.prefix : defaultPrefix)
+        });
+
+        this.inhibitorHandler = new InhibitorHandler(this, {
+            directory: path.join(__dirname, '..', 'inhibitors/')
         });
 
         this.listenerHandler = new ListenerHandler(this, {
