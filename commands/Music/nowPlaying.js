@@ -5,6 +5,7 @@ class NowPlayingCommand extends Command {
         super('nowplaying', {
             aliases: ['nowplaying', 'np'],
             category: 'Music',
+            channel: 'guild',
             clientPermissions: ["SPEAK", "CONNECT"],
             guildOnly: true
         });
@@ -15,24 +16,43 @@ class NowPlayingCommand extends Command {
     }
 
     async exec(message) {
-        const voiceChannel = message.member.voice.channel;
-        let isPlaying = this.client.player.isPlaying(message.guild.id);
-
-        if (!voiceChannel) {
-            return message.util.send(this.client.util.emptyVoiceChannel());
+        const queue = this.client.player.getQueue(message);
+        const voice = message.member.voice.channel;
+        if (!voice) {
+            const embed = this.client.util.embed()
+                .setTitle(`No user found in voice channel`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`Join a voice channel and try again.`)
+                .setTimestamp()
+            return message.util.send(embed);
         }
 
-        if (!isPlaying) {
-            return message.util.send(this.client.util.noPlaying());
+        if (!queue) {
+            const embed = this.client.util.embed()
+                .setTitle(`No song playing`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`"No songs are currently playing in this server.`)
+                .setTimestamp()
+            return message.util.send(embed);
         }
 
-        let song = await this.client.player.nowPlaying(message.guild.id);
-        let progressBar = this.client.player.createProgressBar(message.guild.id, 20, '➤', '▬');
-        let embed = this.client.util.embed()
-            .setTitle(`${message.guild.name} Current Song`)
-            .setDescription(`Current song: ${song.name}\n${progressBar}`)
+        // Gets the current song
+        const track = await this.client.player.nowPlaying(message);
+
+        // Generate discord embed to display song info
+        const embed = this.client.util.embed()
+            .setAuthor(`Currently playing`, message.guild.iconURL({ dynamic: true }))
+            .setThumbnail(`${track.thumbnail}`)
+            .setTitle(track.title)
+            .setURL(track.url)
+            //.addField(`Title`, `${track.title}`)
+            .addField(`Channel`, `${track.author}`, true)
+            .addField(`Duration`, `${this.client.util.millisToDuration(track.durationMS)}`, true)
+            .addField(`Description`, track.description ? (track.description.substring(0, 150)+"\n"+(`And more...`).toLowerCase()) : `No description...`)
+            .addField("\u200B", this.client.player.createProgressBar(message, { timecodes: true }))
             .setTimestamp()
-            .setFooter(`Req by: ${message.author.tag}`)
+            .setFooter(`Req by: ${message.author.tag}`);
+
         return message.util.send(embed);
     }
 }

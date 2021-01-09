@@ -10,5 +10,6 @@ module.exports = class unhandledRejectionListener extends Listener {
 
     async exec(error) {
             this.client.logger.log('error', `Uncaught Promise Rejection: ${error}`);
+        console.log(error);
     }
 }

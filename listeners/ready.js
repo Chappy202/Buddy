@@ -1,5 +1,7 @@
 const { Listener } = require('discord-akairo');
 const config = require('../config.js');
+const child_process = require('child_process');
+const path = require('path');
 
 module.exports = class ReadyListener extends Listener {
     constructor() {
@@ -10,6 +12,9 @@ module.exports = class ReadyListener extends Listener {
     }
 
     async exec() {
+        /*child_process.exec(path.join(__dirname, '..', 'lavalink/startServer.bat'), function (error, stdout, stderr){
+            console.log(stdout);
+        })*/
         this.client.logger.log('info', `${this.client.user.tag} is ready to Rumble!!`);
 
         // Set first time activity before interval
@@ -28,14 +33,6 @@ module.exports = class ReadyListener extends Listener {
             });
         }, 30000);
 
-        this.client.config
-        /*const nodes = [...this.client.manager.nodes.values()];
-        for (const node of nodes){
-            try {
-                await node.connect();
-            } catch (e) {
-                this.client.manager.emit('error', e, node);
-            }
-        }*/
+        this.client.config;
     }
 }

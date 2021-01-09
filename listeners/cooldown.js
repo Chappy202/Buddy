@@ -12,7 +12,7 @@ module.exports = class CooldownListener extends Listener {
     exec(message, command, remaining) {
 
         let output = new MessageEmbed()
-            .setColor('#f26666')
+            .setColor(process.env.ERRORCOLOR)
             .setTitle(`Command on cooldown!`)
             .setDescription(`You have to wait \`${this.client.util.millisToDuration(remaining)}\` before you can use \`${command}\` again!`)
             .setTimestamp()

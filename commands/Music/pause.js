@@ -5,29 +5,44 @@ class PauseCommand extends Command {
         super('pause', {
             aliases: ['pause'],
             category: 'Music',
+            channel: 'guild',
             clientPermissions: ["SPEAK", "CONNECT"],
-            guildOnly: true,
+            guildOnly: true
         });
         this.name = "pause"
-        this.description = "Pause the current playing song."
+        this.description = "Pause the current playing song"
         this.usage = "pause"
         this.example = "pause"
     }
 
     async exec(message) {
-        const voiceChannel = message.member.voice.channel;
-        let isPlaying = this.client.player.isPlaying(message.guild.id);
-
-        if (!voiceChannel) {
-            return message.util.send(this.client.util.emptyVoiceChannel());
+        const queue = this.client.player.getQueue(message);
+        const voice = message.member.voice.channel;
+        if (!voice) {
+            const embed = this.client.util.embed()
+                .setTitle(`No user found in voice channel`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`Join a voice channel and try again.`)
+                .setTimestamp()
+            return message.util.send(embed);
         }
 
-        if (!isPlaying) {
-            return message.util.send(this.client.util.noPlaying());
+        if (!queue) {
+            const embed = this.client.util.embed()
+                .setTitle(`No song playing`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`No songs are currently playing in this server.`)
+                .setTimestamp()
+            return message.util.send(embed);
         }
 
-        let embed = new this.client.util.embed()
-            .setTitle(`Paused: ${song.name}`)
+        // Get the current song and pause it
+        await this.client.player.pause(message);
+        const track = this.client.player.nowPlaying(message);
+        // Send pause feedback
+        let embed = this.client.util.embed()
+            .setTitle(`Paused: ${track.title}`)
+            .setURL(`${track.url}`)
             .setDescription(`Song Paused :pause_button:`)
             .setTimestamp()
             .setFooter(`Req by: ${message.author.tag}`);

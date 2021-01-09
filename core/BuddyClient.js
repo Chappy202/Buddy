@@ -6,12 +6,12 @@ const {
 } = require('discord-akairo');
 const { ownerID, defaultPrefix } = require('../config.js');
 const config = require('../config.js');
-//const { Manager } = require('@lavacord/discord.js');
 const BuddyClientUtil = require('./BuddyClientUtil.js');
 const db = require('quick.db');
 const winston = require('winston');
 const utils = require('./utils.js');
-const { Player } = require('discord-music-player');
+const { Player } = require('discord-player');
+const { GiveawaysManager } = require('discord-giveaways');
 
 require('../structures/Guild.js');
 require('../structures/GuildMember.js');
@@ -37,15 +37,6 @@ module.exports = class BuddyClient extends AkairoClient{
             )
         });
 
-        // this.manager = new Manager(this, [
-        //     {
-        //         id: 'main',
-        //         host: process.env.LAVA_HOST,
-        //         port: process.env.LAVA_PORT,
-        //         password: process.env.LAVA_PASS
-        //     }
-        // ]);
-
         this.commandHandler = new CommandHandler(this, {
             directory: path.join(__dirname, '..', 'commands/'),
             handleEdits: true,
@@ -62,22 +53,44 @@ module.exports = class BuddyClient extends AkairoClient{
             directory: path.join(__dirname, '..', 'listeners/')
         });
 
+        /*this.giveaway = new GiveawaysManager(this, {
+            storage: path.join(__dirname, '..', 'assets/json/giveaways.JSON'),
+            updateCountdownEvery: 10000,
+            hasGuildMembersIntent: false,
+            default: {
+                botsCanWin: false,
+                exemptPermissions: ['ADMINISTRATOR'],
+                embedColor: process.env.BASECOLOR,
+                reaction: '🎉'
+            }
+        });*/
+
+        this.player = new Player(this, {
+            leaveOnEnd: true,
+            leaveOnEndCooldown: 5000,
+            leaveOnStop: true,
+            leaveOnEmpty: true,
+            leaveOnEmptyCooldown: 2000,
+            autoSelfDeaf: true
+        });
+
         this.util = new BuddyClientUtil(this);
+
         this.config = config;
         this.db = db;
 
-        this.player = new Player(this, {
+        /*this.player = new Player(this, {
             leaveOnEnd: false,
             leaveOnStop: true,
             leaveOnEmpty: false,
             timeout: 5000,
             quality: 'high',
-        });
+        });*/
 
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
             listenerHandler: this.listenerHandler,
-            //musicHandler: this.player,
+            musicHandler: this.player,
             process: process
         });
     }
