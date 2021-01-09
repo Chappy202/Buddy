@@ -35,7 +35,7 @@ class SoundboardCommand extends Command {
         const col = new Discord.Collection();
 
         const embed = this.client.util.embed()
-            .setTitle(`Soundbar Sounds`)
+            .setTitle(`Soundboard Sounds`)
             .setDescription(`You can use \`sb help\` to view this list.\nThere are a total of **${totalSounds}** sounds.\nUse \`sb stop\` to stop playing the sound.`)
             .setTimestamp()
             .setFooter(`Req by: ${message.author.tag}`);
