@@ -61,9 +61,9 @@ class CryptoCommand extends Command {
                 if (!(Object.keys(data.data).length === 0 && data.data.constructor === Object)) {
                     const output = this.client.util.embed()
                         .setColor('#6bcbd8')
-                        .setTitle(`Value of ${upFirst(currency)}`)
-                        .setDescription(`**${upFirst(currency)} value in USD:** $${data.data[currency].usd}
-            **${upFirst(currency)} value in ZAR:** R${data.data[currency].zar}`)
+                        .setTitle(`Value of ${this.client.util.capatalizeFirst(currency)}`)
+                        .setDescription(`**${this.client.util.capatalizeFirst(currency)} value in USD:** $${data.data[currency].usd}
+            **${this.client.util.capatalizeFirst(currency)} value in ZAR:** R${data.data[currency].zar}`)
                         .setTimestamp(Date())
                         .setFooter(`Req by: ${message.author.tag}`);
 
