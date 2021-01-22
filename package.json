@@ -28,6 +28,7 @@
     "coingecko-api": "^1.0.10",
     "discord-akairo": "^8.1.0",
     "discord-giveaways": "^4.4.3",
+    "discord-image-generation": "^1.4.5",
     "discord-paginationembed": "^2.1.0",
     "discord-player": "^3.2.1",
     "discord.js": "^12.5.1",
@@ -51,6 +52,6 @@
     "sqlite": "^4.0.19",
     "tnai": "^1.0.5",
     "winston": "^3.3.3",
-    "ytdl-core": "^4.4.1"
+    "ytdl-core": "^4.4.4"
   }
 }

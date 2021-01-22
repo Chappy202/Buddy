@@ -105,7 +105,9 @@ module.exports = class BuddyClient extends AkairoClient{
     }
 
     async login(token){
+        this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
         this.commandHandler.useListenerHandler(this.listenerHandler);
+        this.inhibitorHandler.loadAll();
         this.listenerHandler.loadAll();
         this.commandHandler.loadAll();
 

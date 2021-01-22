@@ -1,6 +1,7 @@
 const { Command } = require('discord-akairo');
 const Discord = require('discord.js');
 const fs = require('fs');
+const test = require('../Image/module');
 
 class HelpCommand extends Command {
     constructor() {
@@ -31,6 +32,7 @@ class HelpCommand extends Command {
             let commands = fs.readdirSync(`./commands/${category}`);
             commands.forEach(cmd => {
                 if (!cmd.endsWith('.js')) return;
+                if (cmd === 'module.js') return;
 
                 let check = fs.existsSync(`./commands/${category}/${cmd}`);
 
@@ -85,7 +87,8 @@ class HelpCommand extends Command {
 
                 em.addField(`${category}`, col[category].join(' - '));
             }
-
+            console.log(__dirname + '\\commands\\Image\\module.js')
+            console.log(test());
             message.util.send(em);
         } else {
             let i = 1;

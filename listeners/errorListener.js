@@ -9,6 +9,7 @@ module.exports = class errorListener extends Listener {
     }
 
     async exec(error, message, command) {
+        console.log(error)
         this.client.logger.log('error', `Something went wrong on ${command.id} | Error: ${error} | On the message: ${message}`);
     }
 }

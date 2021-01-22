@@ -15,6 +15,13 @@ class StopCommand extends Command {
         this.example = "stop"
     }
 
+    async stopMusic(message, embed, m){
+        this.client.player.stop(message);
+        embed.setTitle(`Stopped Music`);
+        embed.setDescription(`Music Stopped :stop_button:\nCleared Queue :wastebasket:\nLeft the channel.`);
+        m.edit(embed);
+    }
+
     async exec(message) {
         const queue = await this.client.player.getQueue(message);
         const voice = message.member.voice.channel;
@@ -36,59 +43,62 @@ class StopCommand extends Command {
         }
         const members = voice.members.filter((m) => !m.user.bot);
         const embed = this.client.util.embed()
-            .setTitle(`Stopped`)
-            .setDescription(`Music Stopped :stop_button:\nCleared Queue :wastebasket:\n*Left the channel.*`)
+            .setTitle(`Stopping Music...`)
+            .setDescription(`_Ending current playback.._`)
             .setTimestamp()
-            .setFooter(`Req by: ${message.author.tag}`)
+            .setFooter(`Req by: ${message.author.tag}`);
 
         const m = await message.util.send(embed);
 
         if (members.size > 1){
-            m.react("👍");
-            const mustVote = Math.floor(members.size/2+1);
-            embed.setDescription(`React with 👍 to stop the music! ${mustVote} more votes are required.`);
-            m.edit(embed);
+            if (message.member.hasPermission('ADMINISTRATOR') || message.member.roles.cache.find(r => r.name === "DJ")) {
+                this.stopMusic(message, embed, m);
+            } else {
+                m.react("👍");
+                const mustVote = Math.floor(members.size/2+1);
+                embed.setDescription(`React with 👍 to stop the music! ${mustVote} more votes are required.`);
+                m.edit(embed);
 
-            const filter = (reaction, user) => {
-                const member = message.guild.members.cache.get(user.id);
-                const voiceChannel = member.voice.channel;
-                if (voiceChannel){
-                    return voiceChannel.id === voice.id;
-                }
-            };
+                const filter = (reaction, user) => {
+                    const member = message.guild.members.cache.get(user.id);
+                    const voiceChannel = member.voice.channel;
+                    if (voiceChannel){
+                        return voiceChannel.id === voice.id;
+                    }
+                };
 
-            const collector = await m.createReactionCollector(filter, {
-                time: 25000
-            });
+                const collector = await m.createReactionCollector(filter, {
+                    time: 25000
+                });
 
-            collector.on("collect", (reaction) => {
-                const haveVoted = reaction.count-1;
-                if(haveVoted >= mustVote){
-                    this.client.player.stop(message);
-                    embed.setDescription(`Music Stopped:stop_button:\nCleared Queue :wastebasket:\nLeft the channel.`);
-                    m.edit(embed);
-                    collector.stop(true);
-                } else {
-                    embed.setDescription(`React with 👍 to stop the music! ${mustVote} more votes are required.`);
-                    m.edit(embed);
-                }
-            });
+                collector.on("collect", (reaction) => {
+                    const haveVoted = reaction.count-1;
+                    if(haveVoted >= mustVote){
+                        this.client.player.stop(message);
+                        embed.setTitle(`Stopped Music`);
+                        embed.setDescription(`Music Stopped :stop_button:\nCleared Queue :wastebasket:\nLeft the channel.`);
+                        m.edit(embed);
+                        collector.stop(true);
+                    } else {
+                        embed.setDescription(`React with 👍 to stop the music! ${mustVote} more votes are required.`);
+                        m.edit(embed);
+                    }
+                });
 
-            collector.on("end", (collected, isDone) => {
-                if (isDone) {
-                    const output = this.client.util.embed()
-                        .setColor(process.env.ERRORCOLOR)
-                        .setTitle(`Time is up`)
-                        .setDescription(`Time's up! Please send the command again!`)
-                        .setTimestamp()
+                collector.on("end", (collected, isDone) => {
+                    if (!isDone) {
+                        const output = this.client.util.embed()
+                            .setColor(process.env.ERRORCOLOR)
+                            .setTitle(`Time is up`)
+                            .setDescription(`Time's up! Please send the command again!`)
+                            .setTimestamp()
 
-                    return message.util.send(output);
-                }
-            });
+                        return message.util.send(output);
+                    }
+                });
+            }
         } else {
-            this.client.player.stop(message);
-            embed.setDescription(`Music Stopped:stop_button:\nCleared Queue :wastebasket:\nLeft the channel.`);
-            m.edit(embed);
+            this.stopMusic(message, embed, m);
         }
     }
 }

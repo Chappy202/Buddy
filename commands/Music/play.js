@@ -49,7 +49,12 @@ class PlayCommand extends Command {
                 .setTimestamp()
             return message.util.send(embed);
         }
-
+        let loading = this.client.util.embed()
+            .setTitle(`Loading track...`)
+            .setDescription(`_Please wait while I load the track..._`)
+            .setTimestamp()
+            .setFooter(`Req By: ${message.author.tag}`);
+        await message.util.send(loading);
         await this.client.player.play(message, query, true);
     }
 }

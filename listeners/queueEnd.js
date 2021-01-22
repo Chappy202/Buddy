@@ -15,6 +15,6 @@ module.exports = class QueueEndListener extends Listener {
             .setDescription(`Add more songs to resume playback.`)
             .setTimestamp()
 
-        return message.util.send(output);
+        return message.util.sendNew(output);
     }
 }
