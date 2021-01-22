@@ -38,7 +38,7 @@ class ShuffleCommand extends Command {
         this.client.player.shuffle(message);
         let embed = this.client.util.embed()
             .setTitle(`Shuffled Queue`)
-            .setDescription(`Shuffled queue :twisted_rightwards_arrows:\nShuffled **${client.player.getQueue(message).tracks.length}** songs!`)
+            .setDescription(`Shuffled queue :twisted_rightwards_arrows:\nShuffled **${this.client.player.getQueue(message).tracks.length}** songs!`)
             .setTimestamp()
             .setFooter(`Req by: ${message.author.tag}`);
         return message.util.send(embed);

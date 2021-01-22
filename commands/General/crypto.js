@@ -69,7 +69,7 @@ class CryptoCommand extends Command {
 
                     return message.util.send(output);
                 } else {
-                    const output = new MessageEmbed()
+                    const output = this.client.util.embed()
                         .setColor('#6bcbd8')
                         .setTitle(`Unknown Currency`)
                         .setDescription(`I couldn't find that currency! Make sure you spelled it right, and avoid using abbreviations such as 'BTC'`)
