@@ -3,7 +3,7 @@
 # Buddy Discord Bot
 Buddy is a Discord bot built on the [Akairo framework](https://discord-akairo.github.io/#/) alongside [Discord.js](https://discord.js.org/#/). The aim of Buddy is to provide a multipurpose all in one bot solution.
 <div style="display: block; margin-top: 20px; margin-bottom: 30px;">
-<a href ="https://github.com/Chappy202/Buddy"><img src = "https://img.shields.io/badge/Buddy%20Version-0.0.2-blue.svg?noavatar=true?style=plastic&maxAge=300">
+<a href ="https://github.com/Chappy202/Buddy"><img src = "https://img.shields.io/badge/Buddy%20Version-0.0.3-blue.svg?noavatar=true?style=plastic&maxAge=300">
 <img src = "https://img.shields.io/github/languages/top/Chappy202/Buddy?color=yellow&label=Javascript">
 <img src = "https://img.shields.io/github/issues/Chappy202/Buddy">
 <img src = "https://img.shields.io/github/issues-pr/Chappy202/Buddy">
