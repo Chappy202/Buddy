@@ -1,6 +1,6 @@
 {
   "name": "buddy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Official public Moderation and fun Discord bot that provides various features, tools",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "discord-giveaways": "^4.4.3",
     "discord-image-generation": "^1.4.5",
     "discord-paginationembed": "^2.1.0",
-    "discord-player": "^3.2.1",
+    "discord-player": "github:Snowflake107/discord-player#develop",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "erela.js": "^2.3.1",
@@ -52,6 +52,7 @@
     "sqlite": "^4.0.19",
     "tnai": "^1.0.5",
     "winston": "^3.3.3",
+    "youtube-sr": "^3.0.0",
     "ytdl-core": "^4.4.4"
   }
 }

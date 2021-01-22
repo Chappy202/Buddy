@@ -49,18 +49,32 @@ class HentaiNSFWCommand extends Command {
         return output;
     }
 
-    output(media, msg){
-        const output = new MessageEmbed()
-            .setColor('#eb6449')
-            .setTitle(`Hentai`)
-            .setImage(`${media.url}`)
-            .setFooter(
-                `Req by: ${msg.author.tag}`,
-                msg.author.displayAvatarURL()
-            )
-            .setTimestamp();
+    output(media, msg, isDefault = false){
+        if (!isDefault){
+            const output = new MessageEmbed()
+                .setColor('#eb6449')
+                .setTitle(`Hentai`)
+                .setImage(`${media.url}`)
+                .setFooter(
+                    `Req by: ${msg.author.tag}`,
+                    msg.author.displayAvatarURL()
+                )
+                .setTimestamp();
 
-        return output;
+            return output;
+        } else {
+            const output = new MessageEmbed()
+                .setColor('#eb6449')
+                .setTitle(`Hentai`)
+                .setImage(`${media.url}`)
+                .setFooter(
+                    `You can use 'hentai help' for more specific hentai results.\nReq by: ${msg.author.tag}`,
+                    msg.author.displayAvatarURL()
+                )
+                .setTimestamp();
+
+            return output;
+        }
     }
 
     async exec(message, args) {
@@ -117,7 +131,7 @@ class HentaiNSFWCommand extends Command {
                 return message.util.send(this.help(params, message));
             case 'hentai':
                 media = await nsfw.hentai();
-                return message.util.send(this.output(media, message));
+                return message.util.send(this.output(media, message, true));
             case 'anal':
                 media = await nsfw.anal();
                 return message.util.send(this.output(media, message));
@@ -234,7 +248,8 @@ class HentaiNSFWCommand extends Command {
                 return message.util.send(this.output(media, message));
             default:
                 media = await nsfw.hentai();
-                return message.util.send(this.output(media, message));
+                console.log('default')
+                return message.util.send(this.output(media, message, true));
         }
     }
 }

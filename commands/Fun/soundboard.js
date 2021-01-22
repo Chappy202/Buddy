@@ -127,51 +127,64 @@ class SoundboardCommand extends Command {
     }
 
     async exec(message, args) {
-        const input = args.input.toLowerCase();
-        /*if (input === 'test'){
-            if (this.checkExist('21')){
-                console.log(true)
+        if (args.input){
+            const input = args.input.toLowerCase();
+            const queue = this.client.player.getQueue(message);
+            const voice = message.member.voice.channel;
+            if (input === 'help' || input === 'h' || input === '?' || input === 'sounds' || !args.input){
+                this.displayHelp(message);
+            } else if(input === 'stop' || input === 'end' || input === 'leave') {
+                const output = this.client.util.embed()
+                    .setTitle(`Stopped playing Soundboard sound`)
+                    .setDescription(`Left channel`)
+                    .setFooter(`Req by: ${message.author.tag}`)
+                    .setTimestamp()
+
+                await message.util.send(output);
+                voice.leave();
             } else {
-                console.log(false)
+                if (!voice) {
+                    const embed = this.client.util.embed()
+                        .setTitle(`No user found in voice channel`)
+                        .setColor(process.env.ERRORCOLOR)
+                        .setDescription(`Join a voice channel and try again.`)
+                        .setTimestamp()
+                    return message.util.send(embed);
+                }
+
+                if (queue) {
+                    const embed = this.client.util.embed()
+                        .setTitle(`Song Playing`)
+                        .setColor(process.env.ERRORCOLOR)
+                        .setDescription(`You can't play soundboard sounds while music is playing.`)
+                        .setTimestamp()
+                    return message.util.send(embed);
+                }
+
+                if (this.checkExist(input)){
+                    //console.log(this.checkExist(input))
+                    if (voice){
+                        const connection = await voice.join();
+                        this.playSound(input, message, connection, message.author);
+                    }
+
+                } else {
+                    const embed = this.client.util.embed()
+                        .setTitle(`Unable to find specified sound`)
+                        .setColor(process.env.ERRORCOLOR)
+                        .setDescription(`I couldn't find the sound \`${args.input}\`\nMake sure you spelled it correctly!`)
+                        .setTimestamp()
+                    return message.util.send(embed);
+                }
             }
-        }*/
-        const voice = message.member.voice.channel;
-        if (input === 'help' || input === 'h' || input === '?' || input === 'sounds' || !args.input){
-            this.displayHelp(message);
-        } else if(input === 'stop' || input === 'end' || input === 'leave') {
+        } else {
             const output = this.client.util.embed()
-                .setTitle(`Stopped playing Soundboard sound`)
-                .setDescription(`Left channel`)
+                .setTitle(`Soundboard`)
+                .setDescription(`To get a list of all possible sounds, use \`sb help\`\nTo run the specific sound, use \`sb <sound>\` and replace '<sound>' with the sound name from the help command.`)
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp()
 
-            await message.util.send(output);
-            voice.leave();
-        } else {
-            if (!voice) {
-                const embed = this.client.util.embed()
-                    .setTitle(`No user found in voice channel`)
-                    .setColor(process.env.ERRORCOLOR)
-                    .setDescription(`Join a voice channel and try again.`)
-                    .setTimestamp()
-                return message.util.send(embed);
-            }
-
-            if (this.checkExist(input)){
-                //console.log(this.checkExist(input))
-                if (voice){
-                    const connection = await voice.join();
-                    this.playSound(input, message, connection, message.author);
-                }
-
-            } else {
-                const embed = this.client.util.embed()
-                    .setTitle(`Unable to find specified sound`)
-                    .setColor(process.env.ERRORCOLOR)
-                    .setDescription(`I couldn't find the sound \`${args.input}\`\nMake sure you spelled it correctly!`)
-                    .setTimestamp()
-                return message.util.send(embed);
-            }
+            return message.util.send(output);
         }
     }
 }

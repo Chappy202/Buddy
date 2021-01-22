@@ -31,7 +31,7 @@ class SkipCommand extends Command {
             const embed = this.client.util.embed()
                 .setTitle(`No song playing`)
                 .setColor(process.env.ERRORCOLOR)
-                .setDescription(`"No songs are currently playing in this server.`)
+                .setDescription(`No songs are currently playing in this server.`)
                 .setTimestamp()
             return message.util.send(embed);
         }
@@ -40,7 +40,7 @@ class SkipCommand extends Command {
             const embed = this.client.util.embed()
                 .setTitle(`This is the last song in the queue`)
                 .setColor(process.env.ERRORCOLOR)
-                .setDescription(`"I was unable to skip this song. There's no song after this one!`)
+                .setDescription(`I was unable to skip this song. There's no song after this one!`)
                 .setTimestamp()
             return message.util.send(embed);
         }

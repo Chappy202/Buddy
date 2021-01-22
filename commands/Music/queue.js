@@ -41,7 +41,7 @@ class QueueCommand extends Command {
         if (queue.tracks.length === 1) {
             const embed = this.client.util.embed()
                 .setAuthor(`Server Queue`, message.guild.iconURL({ dynamic: true }))
-                .addField(`Currently playing`, `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\\n`)
+                .addField(`Currently playing`, `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\n`)
             return message.channel.send(embed);
         }
 
@@ -52,16 +52,17 @@ class QueueCommand extends Command {
         FieldsEmbed.embed
             .setColor(process.env.BASECOLOR)
             .setAuthor(`Server Queue`, message.guild.iconURL({ dynamic: true }))
-            .addField(`Currently playing`, `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\\n`);
+            .addField(`Currently playing`, `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Req by ${queue.tracks[0].requestedBy}*\n`);
 
         FieldsEmbed.setArray(queue.tracks[1] ? queue.tracks.slice(1, queue.tracks.length) : [])
             .setAuthorizedUsers([message.author.id])
             .setChannel(message.channel)
             .setElementsPerPage(5)
             .setPageIndicator(true)
-            .formatField("Queue", (track) => `${++i}. [${track.title}](${track.url})\n*Requested by ${track.requestedBy}*\n`);
+            .formatField("Queue", (track) => `${++i}. [${track.title}](${track.url})\n*Req by ${track.requestedBy}*`);
 
-        FieldsEmbed.build();
+        await FieldsEmbed.build();
+        return message.delete();
     }
 }
 

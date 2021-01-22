@@ -9,13 +9,13 @@ module.exports = class PlaylistAddListener extends Listener {
     }
 
     async exec(message, queue, playlist) {
-        console.log(playlist)
-        /*let output = this.client.util.embed()
+        let output = this.client.util.embed()
             .setColor(process.env.BASECOLOR)
-            .setTitle(`The queue is empty`)
-            .setDescription(`Add more songs to resume playback.`)
+            .setTitle(`${playlist.title} Added to the queue.`)
+            .setDescription(`**${playlist.tracks.length}** Songs Have been added to the server queue.`)
             .setTimestamp()
 
-        return message.util.send(output);*/
+
+        return message.util.send(output);
     }
 }

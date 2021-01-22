@@ -3,7 +3,7 @@ const { Command } = require('discord-akairo');
 class PlayCommand extends Command {
     constructor() {
         super('play', {
-            aliases: ['play', 'p'],
+            aliases: ['play', 'p', 'add'],
             category: 'Music',
             channel: 'guild',
             clientPermissions: ["SPEAK", "CONNECT"],
@@ -54,8 +54,14 @@ class PlayCommand extends Command {
             .setDescription(`_Please wait while I load the track..._`)
             .setTimestamp()
             .setFooter(`Req By: ${message.author.tag}`);
+        let playlistRegExp =  /^.*(youtu.be\/|list=)([^#\&\?]*).*/;
         await message.util.send(loading);
-        await this.client.player.play(message, query, true);
+        if (query.match(playlistRegExp)){
+            await this.client.player.play(message, query);
+        } else {
+            await this.client.player.play(message, query, true);
+        }
+
     }
 }
 
