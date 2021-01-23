@@ -19,7 +19,7 @@ class AboutCommand extends Command {
             .setTitle(`About Buddy`)
             .setURL('https://github.com/Chappy202/Buddy')
             .setThumbnail('https://chappy202.com/buddy/images/face.png')
-            .setDescription([`Buddy is developed by **@Chappy🎄#3353**`
+            .setDescription([`Buddy is developed by **@Chappy#3353**`
                 ,''
                 ,`Buddy uses the **[Discord.js](https://discord.js.org)** library and the **[Akairo](https://discord-akairo.github.io/#/)** framework.`
                 ,`You can find the Github repo for Buddy **[here](https://github.com/Chappy202/Buddy)**.`

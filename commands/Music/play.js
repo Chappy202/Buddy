@@ -55,7 +55,7 @@ class PlayCommand extends Command {
             .setTimestamp()
             .setFooter(`Req By: ${message.author.tag}`);
         let playlistRegExp =  /^.*(youtu.be\/|list=)([^#\&\?]*).*/;
-        let spotifyPlaylistRegExp = /^(https:\/\/open.spotify.com\/user\/spotify\/playlist\/|spotify:user:spotify:playlist:)([a-zA-Z0-9]+)(.*)$/;
+        let spotifyPlaylistRegExp = /^(https:\/\/open.spotify.com\/playlist\/|spotify:playlist:)([a-zA-Z0-9]+)(.*)$/;
         if (query.match(spotifyPlaylistRegExp)){
             await message.util.send(loading.setTitle(`Loading Spotify Playlist...`).setDescription(`_Please be patient while I load the playlist, this might take a while..._`));
         } else if(query.match(playlistRegExp)) {
