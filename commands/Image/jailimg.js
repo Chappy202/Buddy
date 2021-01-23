@@ -21,7 +21,7 @@ class JailImgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.Jail().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Jailed ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`Jailed <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

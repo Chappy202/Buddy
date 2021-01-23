@@ -21,7 +21,7 @@ class AffectImgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.Affect().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Affect ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`Affect <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

@@ -21,7 +21,7 @@ class ConfusedstonksCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.ConfusedStonk().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Confusedstonks ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`Confusedstonks <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

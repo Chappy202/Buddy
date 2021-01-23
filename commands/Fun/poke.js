@@ -17,7 +17,7 @@ class PokeCommand extends Command {
 
     async exec(message){
         let user = message.mentions.users.first();
-        if (!user) return message.util.send(this.client.util.embed().setTitle("Couln't find user").setColor('#f26666').setDescription(`Make sure to tag someone!`).setTimestamp());
+        if (!user) return message.util.send(this.client.util.embed().setTitle("Couldn't find user").setColor('#f26666').setDescription(`Make sure to tag someone!`).setTimestamp());
         if (message.author.id === user.id) return message.util.send(this.client.util.embed().setTitle("Uh.. Something is wrong").setColor('#f26666').setDescription(`You can't poke yourself.`).setTimestamp());
 
         let embed = this.client.util.embed()
@@ -31,7 +31,7 @@ class PokeCommand extends Command {
         //console.log(hug.data.url);
         embed = this.client.util.embed()
             .setTitle("Poke 👉")
-            .setDescription(`${message.author.tag} Poked ${user.tag}`)
+            .setDescription(`<@${message.author.id}> Poked <@${user.id}>`)
             .setImage(media.url)
             .setTimestamp()
             .setFooter(

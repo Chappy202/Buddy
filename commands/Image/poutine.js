@@ -21,7 +21,7 @@ class PoutineimgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.Poutine().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Poutine ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`Poutine <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

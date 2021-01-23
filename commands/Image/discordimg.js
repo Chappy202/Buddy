@@ -21,7 +21,7 @@ class DiscordImgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.DiscordBlue().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Discord ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`Discord <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

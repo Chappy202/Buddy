@@ -19,7 +19,7 @@ class FacepalmCommand extends Command {
         let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
         let img = await new DIG.Facepalm().getImage(avatar);
         let embed = this.client.util.embed()
-            .setAuthor(`Facepalm ${message.author.tag}`, message.author.avatarURL())
+            .setAuthor(`Facepalm <@${message.author.id}>`, message.author.avatarURL())
             .setFooter(`Req by: ${message.author.tag}`)
             .setTimestamp();
         message.util.send(embed);

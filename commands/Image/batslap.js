@@ -23,7 +23,7 @@ class BatslapCommand extends Command {
         let avatar = user.author.displayAvatarURL({ dynamic: false, format: 'png' });
         let img = await new DIG.Batslap().getImage(avatar, message.author.avatarURL({ dynamic: false, format: 'png' }));
         let embed = this.client.util.embed()
-            .setAuthor(`${message.author.tag} Batslaps ${user.tag}`, message.author.avatarURL())
+            .setAuthor(`<@${message.author.id}> Batslaps <@${user.id}>`, message.author.avatarURL())
             .setFooter(`Req by: ${message.author.tag}`)
             .setTimestamp();
         message.util.send(embed);

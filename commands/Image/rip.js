@@ -21,7 +21,7 @@ class RIPimgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.Rip().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`RIP ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`R.I.P. <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

@@ -32,7 +32,7 @@ class KissCommand extends Command {
         embed = new Discord.MessageEmbed()
             .setTitle("Kiss 💋")
             .setColor('#e879d5')
-            .setDescription(`Uwu ${message.author.tag} kissed ${user.tag}`)
+            .setDescription(`Uwu <@${message.author.id}> kissed <@${user.id}>`)
             .setImage(kiss.data.url)
             .setTimestamp(Date())
 

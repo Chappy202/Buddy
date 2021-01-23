@@ -33,7 +33,7 @@ class HugCommand extends Command {
         embed = new Discord.MessageEmbed()
             .setTitle("Hug ❤")
             .setColor('#e879d5')
-            .setDescription(`${message.author.tag} Hugged <@${user.tag}>`)
+            .setDescription(`<@${message.author.id}> Hugged <@${user.id}>`)
             .setImage(hug.data.url)
             .setTimestamp(Date())
 

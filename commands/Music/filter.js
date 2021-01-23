@@ -84,14 +84,14 @@ class FilterCommand extends Command {
         if (filtersUpdated[filterRealName]){
             const embed = this.client.util.embed()
                 .setTitle(`Adding Filter`)
-                .setDescription(`I'm adding the filter to the music, please wait... Note: the shorter the music, the faster it will be.`)
+                .setDescription(`I'm adding the filter to the music, please wait... _Note: the shorter the music, the faster it will be._`)
                 .setTimestamp()
                 .setFooter(`Req by: ${message.author.tag}`);
             return message.util.send(embed);
         } else {
             const embed = this.client.util.embed()
                 .setTitle(`Removing Filter`)
-                .setDescription(`I'm removing the filter to the music, please wait... Note: the shorter the music, the faster it will be.`)
+                .setDescription(`I'm removing the filter from the music, please wait... _Note: the shorter the music, the faster it will be._`)
                 .setTimestamp()
                 .setFooter(`Req by: ${message.author.tag}`);
             return message.util.send(embed);

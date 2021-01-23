@@ -31,7 +31,7 @@ class TickleCommand extends Command {
         //console.log(hug.data.url);
         embed = this.client.util.embed()
             .setTitle("Tickle 😂")
-            .setDescription(`${message.author.tag} Tickled ${user.tag}`)
+            .setDescription(`<@${message.author.id}> Tickled <@${user.id}>`)
             .setImage(media.url)
             .setTimestamp()
             .setFooter(

@@ -21,7 +21,7 @@ class NotstonkimgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.NotStonk().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`NotStonk ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`NotStonk <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

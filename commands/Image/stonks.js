@@ -21,7 +21,7 @@ class StonksimgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.Stonk().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Stonks ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`Stonks <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

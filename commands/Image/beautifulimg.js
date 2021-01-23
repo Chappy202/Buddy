@@ -21,7 +21,7 @@ class BeautifulImgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.Beautiful().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Beautiful ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`Beautiful <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

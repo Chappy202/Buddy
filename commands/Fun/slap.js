@@ -31,7 +31,7 @@ class SlapCommand extends Command {
         //console.log(hug.data.url);
         embed = this.client.util.embed()
             .setTitle("Slap 👏")
-            .setDescription(`${message.author.tag} Slapped ${user.tag}`)
+            .setDescription(`<@${message.author.id}> Slapped <@${user.id}>`)
             .setImage(media.url)
             .setTimestamp()
             .setFooter(

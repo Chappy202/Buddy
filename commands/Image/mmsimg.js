@@ -21,7 +21,7 @@ class MmsimgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.Mms().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Mms ${message.author.tag}`, message.author.avatarURL())
+                .setAuthor(`Mms <@${message.author.id}>`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);
