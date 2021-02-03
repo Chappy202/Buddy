@@ -21,7 +21,7 @@ class DeleteimgCommand extends Command {
             let avatar = message.author.displayAvatarURL({ dynamic: false, format: 'png' });
             let img = await new DIG.Delete().getImage(avatar);
             let embed = this.client.util.embed()
-                .setAuthor(`Delete <@${message.author.id}>`, message.author.avatarURL())
+                .setAuthor(`Delete ${message.author.username}`, message.author.avatarURL())
                 .setFooter(`Req by: ${message.author.tag}`)
                 .setTimestamp();
             message.util.send(embed);

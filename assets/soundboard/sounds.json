@@ -747,5 +747,12 @@
     "nsfw": false,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "listen",
+    "file": "listen.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]
