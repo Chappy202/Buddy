@@ -754,5 +754,12 @@
     "nsfw": false,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "phintro",
+    "file": "phintro.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]

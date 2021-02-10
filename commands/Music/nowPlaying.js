@@ -36,8 +36,21 @@ class NowPlayingCommand extends Command {
             return message.util.send(embed);
         }
 
-        // Gets the current song
-        const track = await this.client.player.nowPlaying(message);
+        // Get the current song
+        const track = this.client.player.nowPlaying(message);
+
+        if (!track) {
+            this.client.player.clearQueue(message);
+            const embed = this.client.util.embed()
+                .setTitle(`No song playing`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`No songs are currently playing in this server.\n*Leaving voice...*`)
+                .setTimestamp()
+            if (message.guild.me.voice.channel) {
+                message.guild.me.voice.channel.leave();
+            }
+            return message.util.send(embed);
+        }
 
         // Generate discord embed to display song info
         const embed = this.client.util.embed()

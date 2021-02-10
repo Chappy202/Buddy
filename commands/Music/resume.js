@@ -36,9 +36,24 @@ class ResumeCommand extends Command {
             return message.util.send(embed);
         }
 
-        // Get the current song and pause it
-        await this.client.player.resume(message);
+        // Get the current song
         const track = this.client.player.nowPlaying(message);
+
+        if (!track) {
+            this.client.player.clearQueue(message);
+            const embed = this.client.util.embed()
+                .setTitle(`No song playing`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`No songs are currently playing in this server.\n*Leaving voice...*`)
+                .setTimestamp()
+            if (message.guild.me.voice.channel) {
+                message.guild.me.voice.channel.leave();
+            }
+            return message.util.send(embed);
+        }
+
+        await this.client.player.resume(message);
+
         // Send pause feedback
         let embed = this.client.util.embed()
             .setTitle(`Resumed: ${track.title}`)

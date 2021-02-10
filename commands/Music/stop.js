@@ -50,6 +50,22 @@ class StopCommand extends Command {
 
         const m = await message.util.send(embed);
 
+        // Get the current song
+        const track = this.client.player.nowPlaying(message);
+
+        if (!track) {
+            this.client.player.clearQueue(message);
+            const embed = this.client.util.embed()
+                .setTitle(`No song playing`)
+                .setColor(process.env.ERRORCOLOR)
+                .setDescription(`No songs are currently playing in this server.\n*Leaving voice...*`)
+                .setTimestamp()
+            if (message.guild.me.voice.channel) {
+                message.guild.me.voice.channel.leave();
+            }
+            return message.util.send(embed);
+        }
+
         if (members.size > 1){
             if (message.member.hasPermission('ADMINISTRATOR') || message.member.roles.cache.find(r => r.name === "DJ")) {
                 this.stopMusic(message, embed, m);
