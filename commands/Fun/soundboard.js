@@ -82,6 +82,7 @@ class SoundboardCommand extends Command {
         });
         if (soundFile && soundItem) {
             const dispatcher = connection.play(soundFile, { volume: soundItem.volume/100 });
+            connection.voice.setSelfDeaf(true);
             dispatcher.on('start', () => {
                 const output = this.client.util.embed()
                     .setTitle(`Soundboard`)

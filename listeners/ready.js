@@ -16,6 +16,8 @@ module.exports = class ReadyListener extends Listener {
             console.log(stdout);
         })*/
         this.client.logger.log('info', `${this.client.user.tag} is ready to Rumble!!`);
+        // Add support for control panels
+        console.log('Bot Started.');
 
         // Set first time activity before interval
         const index = Math.floor(Math.random() * (this.client.config.activities_list.length - 1) + 1);

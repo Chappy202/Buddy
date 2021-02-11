@@ -8,11 +8,16 @@ class PlayCommand extends Command {
             channel: 'guild',
             clientPermissions: ["SPEAK", "CONNECT"],
             * args() {
+                const embed = {
+                    color: process.env.BASECOLOR,
+                    title: 'What song 🎵',
+                    description: 'What song would you like to play? 🎶',
+                    timestamp: new Date()
+                }
                 const query = yield {
                     match: "content",
                     prompt: {
-                        start: (msg, text) =>
-                            `What song or playlist would you like to listen to?`
+                        start: { embed }
                     },
                     type: "string",
                     validate: function (query) {
