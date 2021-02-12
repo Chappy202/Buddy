@@ -761,5 +761,68 @@
     "nsfw": true,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "turtlesex",
+    "file": "turtlesex.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "hentai",
+    "file": "hentai.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "sheepscream",
+    "file": "sheepscream.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "discordnotify",
+    "file": "discordnotify.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "forfucksake",
+    "file": "forfucksake.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "netflix",
+    "file": "netflix.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "discordjoin",
+    "file": "discordjoin.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "nut",
+    "file": "nut.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
+  },
+  {
+    "name": "moanasian",
+    "file": "moanasian.mp3",
+    "nsfw": true,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]
