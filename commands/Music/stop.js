@@ -42,11 +42,20 @@ class StopCommand extends Command {
             return message.util.send(embed);
         }
         const members = voice.members.filter((m) => !m.user.bot);
+
         const embed = this.client.util.embed()
             .setTitle(`Stopping Music...`)
             .setDescription(`_Ending current playback.._`)
             .setTimestamp()
             .setFooter(`Req by: ${message.author.tag}`);
+
+        if (message.content.substring(1) === 'fuckoff'){
+            embed.setTitle(`That's not very nice...`);
+            embed.setDescription(`_Guess I'll just leave.._`);
+        } else if (message.content.substring(1) === 'leave' || message.content.substring(1) === 'bye'){
+            embed.setTitle(`Leaving...`);
+            embed.setDescription(`_Cleared the queue and left the channel.._`)
+        }
 
         const m = await message.util.send(embed);
 

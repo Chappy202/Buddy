@@ -30,7 +30,7 @@
     "discord-giveaways": "^4.4.3",
     "discord-image-generation": "^1.4.7",
     "discord-paginationembed": "^2.1.0",
-    "discord-player": "github:Snowflake107/discord-player#develop",
+    "discord-player": "^3.3.2",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "erela.js": "^2.3.2",

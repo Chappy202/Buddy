@@ -80,7 +80,8 @@ module.exports = class BuddyClient extends AkairoClient{
             leaveOnStop: true,
             leaveOnEmpty: true,
             leaveOnEmptyCooldown: 2000,
-            autoSelfDeaf: true
+            autoSelfDeaf: true,
+            enableLive: true
         });
 
         this.util = new BuddyClientUtil(this);
