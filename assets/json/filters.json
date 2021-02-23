@@ -11,5 +11,20 @@
   "normalizer": "Normalizer",
   "surrounding": "Surrounding",
   "pulsator": "Pulsator",
-  "superequalizer": "Superequalizer"
+  "subboost": "Subboost",
+  "karaoke": "Karaoke",
+  "flanger": "Flanger",
+  "gate": "Gate",
+  "haas": "Haas",
+  "mcompand": "MCompand",
+  "mono": "Mono",
+  "mstlr": "MSTLR",
+  "mstrr": "MSTRR",
+  "compressor": "Compressor",
+  "expander": "Expander",
+  "softlimiter": "Softlimiter",
+  "chorus": "Chorus",
+  "chorus2d": "Chorus2D",
+  "chorus3d": "Chorus3D",
+  "fadein": "Fadein"
 }

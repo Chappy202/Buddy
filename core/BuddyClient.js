@@ -12,7 +12,6 @@ const db = require('quick.db');
 const winston = require('winston');
 const utils = require('./utils.js');
 const { Player } = require('discord-player');
-const { GiveawaysManager } = require('discord-giveaways');
 const malScraper = require('mal-scraper');
 
 require('../structures/Guild.js');
@@ -62,18 +61,6 @@ module.exports = class BuddyClient extends AkairoClient{
         // Anime
         this.anime = malScraper;
 
-        /*this.giveaway = new GiveawaysManager(this, {
-            storage: path.join(__dirname, '..', 'assets/json/giveaways.JSON'),
-            updateCountdownEvery: 10000,
-            hasGuildMembersIntent: false,
-            default: {
-                botsCanWin: false,
-                exemptPermissions: ['ADMINISTRATOR'],
-                embedColor: process.env.BASECOLOR,
-                reaction: '🎉'
-            }
-        });*/
-
         this.player = new Player(this, {
             leaveOnEnd: true,
             leaveOnEndCooldown: 5000,
@@ -88,14 +75,6 @@ module.exports = class BuddyClient extends AkairoClient{
 
         this.config = config;
         this.db = db;
-
-        /*this.player = new Player(this, {
-            leaveOnEnd: false,
-            leaveOnStop: true,
-            leaveOnEmpty: false,
-            timeout: 5000,
-            quality: 'high',
-        });*/
 
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
