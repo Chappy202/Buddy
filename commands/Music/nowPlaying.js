@@ -62,7 +62,7 @@ class NowPlayingCommand extends Command {
             .addField(`Channel`, `${track.author}`, true)
             .addField(`Duration`, `${this.client.util.millisToDuration(track.durationMS)}`, true)
             .addField(`Description`, track.description ? (track.description.substring(0, 150)+"\n"+(`And more...`).toLowerCase()) : `No description...`)
-            .addField("\u200B", this.client.player.createProgressBar(message, { timecodes: true }))
+            .addField("Song", this.client.player.createProgressBar(message, { timecodes: true }))
             .addField("Queue", this.client.player.createProgressBar(message, { timecodes: true, queue: true }))
             .setTimestamp()
             .setFooter(`Req by: ${message.author.tag}`);

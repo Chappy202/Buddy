@@ -824,5 +824,12 @@
     "nsfw": true,
     "volumeWarning": false,
     "volume": 100
+  },
+  {
+    "name": "onlygame",
+    "file": "onlygame.mp3",
+    "nsfw": false,
+    "volumeWarning": false,
+    "volume": 100
   }
 ]

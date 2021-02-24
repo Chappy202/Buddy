@@ -52,7 +52,8 @@ class QueueCommand extends Command {
         FieldsEmbed.embed
             .setColor(process.env.BASECOLOR)
             .setAuthor(`Server Queue`, message.guild.iconURL({ dynamic: true }))
-            .addField(`Currently playing`, `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Req by ${queue.tracks[0].requestedBy}*\n`);
+            .addField(`Currently playing`, `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Req by ${queue.tracks[0].requestedBy}*\n`, true)
+            .addField(` QueueProgress`, this.client.player.createProgressBar(message, { timecodes: true, queue: true }), true);
 
         FieldsEmbed.setArray(queue.tracks[1] ? queue.tracks.slice(1, queue.tracks.length) : [])
             .setAuthorizedUsers([message.author.id])
