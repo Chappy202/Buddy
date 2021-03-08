@@ -29,12 +29,13 @@
     "discord-akairo": "^8.1.0",
     "discord-image-generation": "^1.4.7",
     "discord-paginationembed": "^2.1.0",
-    "discord-player": "^3.3.2",
+    "discord-player": "^3.4.0",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "erela.js": "^2.3.2",
     "express": "^4.17.1",
     "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^4.2.7",
     "lavalink": "^2.11.0",
     "mal-scraper": "^2.11.3",
     "mkdirp": "^1.0.4",
@@ -52,7 +53,7 @@
     "tnai": "^1.1.0",
     "winston": "^3.3.3",
     "xvdl": "^1.0.3",
-    "youtube-sr": "^3.0.4",
-    "ytdl-core": "^4.4.5"
+    "youtube-sr": "^4.0.3",
+    "ytdl-core": "^4.5.0"
   }
 }
